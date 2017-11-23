@@ -8,6 +8,10 @@ var UserSchema = new Schema({
   username: {type:String,unique:true,required:'Username is required',trim:true},
   email: {type: String,index : true,match:/.+\@.+\.+/},
   password: {type:String,required:'Password required'},
+  usertype:{
+    type:String,
+    required:'Provider is required'
+  },
   salt:String,
   provider:{
     type:String,

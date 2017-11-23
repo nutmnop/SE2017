@@ -62,7 +62,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
-                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('/register')" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                    <%if(!username){%>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register')" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <%}else{%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('/logout')" data-wow-delay="0.45s">ออกจากระบบ</button>
+                        <%}%>
                     <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')" data-wow-delay="0.48s">รอบฉาย</button>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
@@ -72,6 +76,9 @@
 
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
                         <a class="" href="/movie-list">ภาพยนตร์</a>
+                    </li>
+                    <li class="wow fadeInDown" data-wow-delay="0.2s">
+                        <a class="" href="/user-profile"><%=username%></a>
                     </li>
 
                 </ul>

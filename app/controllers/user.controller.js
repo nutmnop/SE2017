@@ -47,11 +47,10 @@ exports.adminrender = function(req,res) {
 exports.register = function(req,res,next) {
 console.log(req.body);
   if(!req.user){
-    console.log(req.user);
     var user = new User(req.body);
-    console.log('save');
+    user.usertype = 'customer';
     user.provider = 'local';
-
+    console.log(user.body);
     user.save(function(err){
       if(err){
         var message = getErrorMessage(err);
@@ -61,7 +60,6 @@ console.log(req.body);
       } 
         req.login(user,function(err){//passport ทำให้
         if(err) return next(err);
-        console.log('login');
         return res.redirect('/');
       });
     });
@@ -73,6 +71,16 @@ exports.rendereditmovie = function(req,res) {
   res.render('admin-editmovie',{username:req.user?req.user.username:'',
   messages:req.flash('error')});
 }
+exports.logout = function(req,res) {
+  req.logout();
+  res.redirect('/');
+}
+exports.showprofile= function(req,res) {
+  res.render('user-profile',{username:req.user?req.user.username:'',
+  messages:req.flash('error')});
+}
+
+
 exports.addmovie = function(req,res,next){
 	console.log(req.body);
   console.log("req.body.poster " +req.body.poster);

@@ -12,8 +12,10 @@ module.exports = function(app){
     failureRedirect:'/register',
     failureFlash: true
   }));
+  app.get('/logout',user.logout);
   app.get('/admin-index',user.adminrender);//
   app.route('/admin-editmovie')
   .get(user.rendereditmovie)
   .post(user.addmovie);
+  app.get('/user-profile',user.showprofile);
 }
