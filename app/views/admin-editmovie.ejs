@@ -62,8 +62,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
-                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('#')" data-wow-delay="0.45s">ออกจากระบบ</button>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')" data-wow-delay="0.48s">รอบฉาย</button>
+                    <%if(!username){%>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <%}else{%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                            <%}%>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
@@ -73,7 +76,13 @@
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
                         <a class="" href="/movie-list">ภาพยนตร์</a>
                     </li>
-
+                    <%if(username){%>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/user-profile">
+                                <%=username%>
+                            </a>
+                        </li>
+                        <%}%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -94,7 +103,7 @@
                         </div>
                         <div class="panel-body text-widget footer-menu">
                             <li>
-                                <a href="/admin-editmovie">แก้ไขภาพยนตร์</a>
+                                <a href="/admin-editmovie">ภาพยนตร์</a>
                             </li>
 
                             <li>
@@ -115,47 +124,12 @@
                     <form action="" method="">
                         <div class="profiel-header">
                             <h3>
-                                แก้ไขข้อมูลภาพยนตร์
+                                เพิ่มภาพยนตร์
 
                             </h3>
                             <hr>
                         </div>
 
-                            <!-- Choose edit -->
-                            <div class="properties-area recent-property" style="background-color: #838383;">
-                                <div class="container">
-                                    <div class="row  pr0 padding-top-40 properties-page">
-                                        <div class="col-md-10 padding-bottom-40 large-search">
-                                            <div class="search-form wow pulse">
-                                                <form action="" class=" form-inline">
-                                                    <div class="col-md-12">
-
-                                                        <div class="col-md-6">
-                                                            <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
-
-                                                                <option>สถานที่ 1</option>
-
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
-
-                                                                <option>หนัง 1</option>
-
-                                                            </select>
-
-                                                        </div>
-                                                        
-
-                                                    </div>
-
-                                            </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End choose edit -->
                     <form action="/admin-editmovie" method="POST">
                         <div class="clear">
                             

@@ -53,7 +53,6 @@
         <div id="status">&nbsp;</div>
     </div>
     <!-- Body content -->
-
     <nav class="navbar navbar-default ">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,11 +72,10 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register')" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
-                    <%}else{%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('index')" data-wow-delay="0.45s">ออกจากระบบ</button>
-                    <%}%>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')" data-wow-delay="0.48s">รอบฉาย</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <%}else{%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                            <%}%>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
@@ -87,7 +85,13 @@
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
                         <a class="" href="/movie-list">ภาพยนตร์</a>
                     </li>
-
+                    <%if(username){%>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/user-profile">
+                                <%=username%>
+                            </a>
+                        </li>
+                        <%}%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

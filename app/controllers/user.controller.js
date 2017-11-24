@@ -56,15 +56,21 @@ console.log(req.body);
         var message = getErrorMessage(err);
 
         req.flash('error',message);
-        return res.redirect('/register');
+        return res.redirect('/register',{
+          username:req.user?req.user.username:''
+        });
       } 
         req.login(user,function(err){//passport ทำให้
         if(err) return next(err);
-        return res.redirect('/');
+        return res.redirect('/',{
+          username:req.user?req.user.username:''
+        });
       });
     });
   }else{
-    return res.redirect('/');
+    return res.redirect('/',{
+      username:req.user?req.user.username:''
+    });
   };
 }
 exports.rendereditmovie = function(req,res) {
@@ -85,9 +91,14 @@ exports.addmovie = function(req,res,next){
 	console.log(req.body);
   console.log("req.body.poster " +req.body.poster);
   var str_img = req.body.poster;
-  var img = new Buffer(str_img.split(",")[1],'base64')
-  console.log(req.body.poster);
+  var img = new Buffer(str_img,'base64')
   console.log("img : "+img);
+  res.writeHead(200, {
+    'Content-Type': 'image/png',
+    'Content-Length': img.length
+ });
+
+ res.end(img);
  //var movie = new Movie(req.body);
 //	movie.save(function(err){
 //		if(err){

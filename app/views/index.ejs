@@ -63,11 +63,10 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register')" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                         <%}else{%>
-                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('/logout')" data-wow-delay="0.45s">ออกจากระบบ</button>
-                        <%}%>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')" data-wow-delay="0.48s">รอบฉาย</button>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                            <%}%>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
@@ -77,10 +76,13 @@
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
                         <a class="" href="/movie-list">ภาพยนตร์</a>
                     </li>
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/user-profile"><%=username%></a>
-                    </li>
-
+                    <%if(username){%>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/user-profile">
+                                <%=username%>
+                            </a>
+                        </li>
+                        <%}%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -125,9 +127,11 @@
                             </div>
                             <div class="form-group">
                                 <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
-                                <% movies.forEach(function(movie) { %>
-                                    <option><%=movie.title_eng%></option>
-                                <%})%>
+                                    <% movies.forEach(function(movie) { %>
+                                        <option>
+                                            <%=movie.title_eng%>
+                                        </option>
+                                        <%})%>
 
                                 </select>
                             </div>
@@ -161,7 +165,8 @@
                         <div class="box-two proerty-item">
                             <div class="item-thumb">
                                 <a href="/movie-item">
-                                    <img src="assets/img/demo/property-1.jpg"> <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
+                                    <img src="assets/img/demo/property-1.jpg">
+                                    <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
                                 </a>
                             </div>
                             <div class="item-entry overflow">
@@ -177,27 +182,33 @@
                     </div>
                 </div>
                 <% movies.forEach(function(movie) { %>
-                <div class="proerty-th">
+                    <div class="proerty-th">
                         <div class="col-sm-6 col-md-3 p0">
                             <div class="box-two proerty-item">
                                 <div class="item-thumb">
                                     <a href="/movie-item">
-                                        <img src="assets/img/demo/property-1.jpg"> <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
+                                        <img src="assets/img/demo/property-1.jpg">
+                                        <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
                                     </a>
                                 </div>
                                 <div class="item-entry overflow">
                                     <h5>
-                                        <a href="/movie-item"><%=movie.title_eng%></a>
+                                        <a href="/movie-item">
+                                            <%=movie.title_eng%>
+                                        </a>
                                     </h5>
                                     <div class="dot-hr"></div>
                                     <span class="pull-left">
-                                        <b>Genre :</b><%=movie.type%></span>
-                                    <span class="proerty-price pull-right"><%=movie.length%> mins.</span>
+                                        <b>Genre :</b>
+                                        <%=movie.type%>
+                                    </span>
+                                    <span class="proerty-price pull-right">
+                                        <%=movie.length%> mins.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <%})%>
+                    <%})%>
             </div>
         </div>
     </div>
