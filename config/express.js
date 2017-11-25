@@ -46,6 +46,10 @@ module.exports = function () {
   require('../app/routes/user.routes')(app);
   require('../app/routes/movie.routes')(app);
   app.use(express.static('./public'));
+  app.use('*/assets',express.static('./public/assets'));
+  app.use('*/bootstrap',express.static('./public/bootstrap'));
+  app.use('*/img',express.static('./public/img'));
+  
 
   return app;
 }

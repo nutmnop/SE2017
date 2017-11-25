@@ -16,9 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -130,7 +128,9 @@
 
     <div class="container">
         <div class="clearfix padding-top-40">
-            <h2>LA LA LAND นครดารา</h2>
+            <h2>
+                <%=movies.title_eng%>
+            </h2>
             <hr>
             <div class="col-md-4 p0">
                 <aside class="sidebar sidebar-property blog-asside-right property-style2">
@@ -138,7 +138,7 @@
                     <div class="panel panel-default sidebar-menu wow fadeInRight animated">
 
                         <div class="panel-body recent-property-widget">
-                            <img src="assets/img/ads.jpg">
+                            <img src="img/<%=movies.poster.replace(/"/gi,"")%>" >
                         </div>
                     </div>
 
@@ -152,9 +152,7 @@
 
                             <h4 class="s-property-title">เรื่องย่อ</h4>
                             <div class="s-property-content">
-                                <p> เรื่องราวของ เซบาสเตียน (ไรอัน กอสลิ่ง) หนุ่มนักเปียโนแจ๊ซที่ได้มีโอกาสพบรักกับ มีอา (เอ็มมา
-                                    สโตน) นักแสดงสาวดาวรุ่ง แต่แล้วพวกเขาทั้งคู่กลับพบว่า การตั้งใจในการทำงานเพื่อไล่ตามความฝันของแต่ละฝ่าย
-                                    ดูจะเป็นปัจจัยที่ทำให้ความสัมพันธ์เริ่มระหองระแหง และต่างฝ่ายต่างประคับประคองความรักของทั้งคู่เพื่อให้ผ่านพ้นอุปสรรคให้จงได้</p>
+                                <p><%=movies.synopsis%></p>
                             </div>
                         </div>
                         <!-- End description area  -->
@@ -165,27 +163,27 @@
 
                             <ul class="additional-details-list clearfix">
                                 <li>
-                                    <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">ประเภท</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Romantic</span>
+                                    <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">ประเภทภาพยนตร์</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.type%></span>
                                 </li>
 
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">เรท</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">PG-15</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.rate%></span>
                                 </li>
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">ผู้กำกับ</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Damien Chazelle</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.director%></span>
                                 </li>
                                 <li>
-                                    <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">นักแสดง</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Emma Stone, Ryan Glosling</span>
+                                    <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">นักแสดงนำ</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.actor%></span>
                                 </li>
 
 
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">เวลา</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">120 mins.</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.length%> mins.</span>
                                 </li>
 
 
@@ -196,7 +194,7 @@
                         <div class="section property-video">
                             <h4 class="s-property-title">ตัวอย่างภาพยนตร์</h4>
                             <div class="video-container">
-                                <iframe width="500" height="350" src="https://www.youtube.com/embed/VDMf9m7FXd4" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="500" height="350" src=<%=movies.trailer%> frameborder="0" allowfullscreen></iframe>
 
                             </div>
                         </div>

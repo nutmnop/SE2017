@@ -140,27 +140,34 @@
                     </div>
             <div class="row">
 
-                <div class="proerty-th padding-top-40 ">
-                    <div class="col-sm-6 col-md-3 p0">
-                        <div class="box-two proerty-item">
-                            <div class="item-thumb"><!--dynamic-->
-                                <a href="/movie-item">
-                                    <img src="assets/img/demo/property-1.jpg">
-                                </a>
-                            </div>
-                            <div class="item-entry overflow">
-                                <h5>
-                                    <a href="/movie-item">La La Land </a>
-                                </h5>
-                                <div class="dot-hr"></div>
-                                <span class="pull-left">
-                                    <b>Genre :</b> Romantic </span>
-                                <span class="proerty-price pull-right">120 mins.</span>
+                    <% movies.forEach(function(movie) { %>
+                        <div class="proerty-th">
+                            <div class="col-sm-6 col-md-3 p0">
+                                <div class="box-two proerty-item">
+                                    <div class="item-thumb">
+                                        <a href=/movie-item/<%=movie.id%>>
+                                            <img src="img/<%=movie.poster.replace(/"/gi,"")%>" >
+                                            <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
+                                        </a>
+                                    </div> 
+                                    <div class="item-entry overflow">
+                                        <h5>
+                                                <a href=/movie-item/<%=movie.id%>>
+                                                <%=movie.title_eng%>
+                                            </a>
+                                        </h5>
+                                        <div class="dot-hr"></div>
+                                        <span class="pull-left">
+                                            <b>Genre :</b>
+                                            <%=movie.type%>
+                                        </span>
+                                        <span class="proerty-price pull-right">
+                                            <%=movie.length%> mins.</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
+                        <%})%>
             </div>
         </div>
     </div>
