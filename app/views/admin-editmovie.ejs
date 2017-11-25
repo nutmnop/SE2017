@@ -120,35 +120,26 @@
                 </div>
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
+                    <form method='POST' action='/admin-editmovie' enctype="multipart/form-data">
 
-                    <form action="" method="">
-                        <div class="profiel-header">
-                            <h3>
-                                เพิ่มภาพยนตร์
-
-                            </h3>
-                            <hr>
-                        </div>
-
-                    <form action="/admin-editmovie" method="POST">
                         <div class="clear">
-                            
+
                             <div class="col-sm-4 padding-top-25">
                                 <div class="form-group">
                                     <label>ชื่อเรื่องภาษาไทย</label>
                                     <input name="title_th" type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                        <label>ชื่อเรื่องภาษาอังกฤษ</label>
-                                        <input name="title_eng" type="text" class="form-control">
+                                    <label>ชื่อเรื่องภาษาอังกฤษ</label>
+                                    <input name="title_eng" type="text" class="form-control">
                                 </div>
-                                <hr>  
+                                <hr>
                                 <div class="col-md-15">
-                                        <label>ประเภท</label>
-                                        <br>  
-                                        <select class="scrollpicker" name="type">
+                                    <label>ประเภท</label>
+                                    <br>
+                                    <select class="scrollpicker" name="type">
                                         <option>Action</option>
-                                        <option>Adventure</option> 
+                                        <option>Adventure</option>
                                         <option>War</option>
                                         <option>Drama</option>
                                         <option>Sci-Fi</option>
@@ -162,57 +153,51 @@
                                         <option>Fantasy</option>
                                         <option>Romantic</option>
                                         <option>อื่นๆ</option>
-                                        </select>                                    
+                                    </select>
                                 </div>
-                                 
+
                                 <div class="form-group">
                                     <br>
-                                        <label>ความยาว (นาที)</label>
-                                        <input type="text" class="form-control" name="length">
+                                    <label>ความยาว (นาที)</label>
+                                    <input type="text" class="form-control" name="length">
                                 </div>
-                                
-                                
+
+
                             </div>
 
                             <div class="col-sm-4 padding-top-25">
                                 <div class="form-group">
-                                        <label>ชื่อผู้กำกับ</label>
-                                        <input type="text" class="form-control" name="director">
+                                    <label>ชื่อผู้กำกับ</label>
+                                    <input type="text" class="form-control" name="director">
                                 </div>
                                 <div class="form-group">
-                                        <label>นักแสดงนำ</label>
-                                        <input type="text" class="form-control" name="actor">
+                                    <label>นักแสดงนำ</label>
+                                    <input type="text" class="form-control" name="actor">
                                 </div>
-                                <hr>  
+                                <hr>
                                 <div class="col-md-15">
-                                        <label>เรท</label>
-                                        <br>  
-                                        <select id="lunchBegins" class="scrollpicker" name="rate">
+                                    <label>เรท</label>
+                                    <br>
+                                    <select id="lunchBegins" class="scrollpicker" name="rate">
                                         <option>ท ทั่วไป</option>
-                                        <option>ส ส่งเสริม</option> 
+                                        <option>ส ส่งเสริม</option>
                                         <option>น 13+</option>
                                         <option>น 15+</option>
                                         <option>น 18+</option>
                                         <option>ฉ 20-</option>
-                                        </select>                                    
+                                    </select>
                                 </div>
-                               
+                                <br>
+                                <label>วันที่เข้าฉาย</label>
+                                <input type="date" class="form-control" name="startdate">
+
                                 <div class="form-group">
-                                        <br>
-                                        <label>ตัวอย่างภาพยนตร์</label>
-                                        <input type="text" class="form-control" placeholder="http://" name="trailer">
+                                    <br>
+                                    <label>ตัวอย่างภาพยนตร์</label>
+                                    <input type="text" class="form-control" placeholder="http://" name="trailer">
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
-                                        <input type="file" id="wizard-picture" name="poster">
-                                    </div>
-                                    <h6>Choose Poster</h6>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="clear">
@@ -225,12 +210,15 @@
                         </div>
 
                         <div class="col-sm-5">
-                            
-                            <input type='submit' class='btn btn-finish btn-primary' name='Save' value='Save' />
-                        </div>
-                        <br>
+                            <input type='file' name='myimage' value='browse' placeholder="browse" />
 
+                            <br>
+                            <input type='submit' class='btn btn-finish btn-primary' value='save' />
+                        </div>
                     </form>
+
+
+
 
 
                 </div>

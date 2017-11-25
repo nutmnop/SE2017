@@ -10,24 +10,24 @@ var flash = require('connect-flash');
 var passport = require('passport');
 
 
-module.exports=function(){
+module.exports = function () {
   var app = express();
 
-  if(process.env.NODE_ENV === 'development'){
+  if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
-  }else{
+  } else {
     app.use(compression);
   }
   app.use(cookieSession({
-    name:'session',
-    keys:['secret_key1','secret_key2']
+    name: 'session',
+    keys: ['secret_key1', 'secret_key2']
   }));
   app.use(session({
-    secret:config.sessionSecret,
+    secret: config.sessionSecret,
     resave: false,
     saveUninitialized: true
   }));
-  
+
   app.use(flash());
 
   app.use(passport.initialize());
@@ -37,11 +37,11 @@ module.exports=function(){
   }));
   app.use(bodyParser.json());
   app.use(validator());
-  
 
 
-  app.set('views','./app/views');
-  app.set('view engine','ejs');
+
+  app.set('views', './app/views');
+  app.set('view engine', 'ejs');
   require('../app/routes/index.routes')(app);
   require('../app/routes/user.routes')(app);
   require('../app/routes/movie.routes')(app);

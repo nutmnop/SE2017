@@ -14,6 +14,7 @@ var MovieSchema = new Schema({
   poster:String,
   synopsis :String,
   surname: String,
+  startdate:Date,
   title_th: {type:String,unique:true,required:'Title is required',trim:true},
   title_eng: {type: String,index : true},
   
