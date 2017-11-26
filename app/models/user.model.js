@@ -10,8 +10,10 @@ var UserSchema = new Schema({
   password: {type:String,required:'Password required'},
   usertype:{
     type:String,
-    required:'Provider is required'
+    required:'Usertype is required'
   },
+  dateofbirth:Date,
+  phone:String,
   salt:String,
   provider:{
     type:String,

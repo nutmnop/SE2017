@@ -1,19 +1,8 @@
 var User = require('mongoose').model('User');
 var Movie = require('mongoose').model('Movie');
-var multer = require('multer');
-var crypto = require('crypto');
-var path = require('path');
-var storage = multer.diskStorage({
-  destination: 'public/img/',
-  filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw) {
-      if (err) return cb(err)
-      cb(null, raw.toString('hex') + path.extname(file.originalname))
-    })
-  }
-})
 
-var upload = multer({ storage: storage }).array('myimage');
+var crypto = require('crypto');
+
 var passport = require('passport');
 
 
@@ -37,22 +26,22 @@ var getErrorMessage = function (err) {
   }
   return message;
 }
-
-exports.render = function (req, res) {
-  res.render('user-profile', {
-    username: req.user ? req.user.username : '',
-    messages: req.flash('error')
-  });
-}
 exports.renderregist = function (req, res) {
-  if (!req.user) {
-    res.render('register', {
-      username: req.user ? req.user.username : '',
-      messages: req.flash('error')
-    });
-  } else {
-    return res.redirect('/');
-  }
+  Movie.find({}, function (err, movies) {
+    if (err) {
+      return next(err);
+    } else {
+      if (!req.user) {
+        res.render('register', {
+          username: req.user ? req.user.username : '',
+          messages: req.flash('error'),movies,pages:req.params.pages
+        });
+      } else {
+        return res.redirect('/');
+      }
+    }
+  });
+  
 
 }
 exports.adminrender = function (req, res) {
@@ -64,6 +53,7 @@ exports.adminrender = function (req, res) {
 }
 exports.register = function (req, res, next) {
   console.log(req.body);
+  console.log("param "+req.params);
   if (!req.user) {
     var user = new User(req.body);
     user.usertype = 'customer';
@@ -73,47 +63,45 @@ exports.register = function (req, res, next) {
       if (err) {
         var message = getErrorMessage(err);
         req.flash('error', message);
-        return res.redirect('/register');
+        return res.redirect('/register/'+req.params.pages);
       }
       req.login(user, function (err) {//passport ทำให้
         if (err) return next(err);
-        return res.redirect('/');
+        console.log(req.params.pages);
+        if(req.params.pages==='index'){
+          res.redirect('/');
+        }else if(JSON.stringify(req.params.pages).length > 20){
+          res.redirect('/movie-item/'+req.params.pages);
+        }
+        else res.redirect('/'+req.params.pages);
       });
     });
   } else {
-    return res.redirect('/');
+    if(req.params.pages==='index'){
+      res.redirect('/');
+    }else if(JSON.stringify(req.params.pages).length > 20){
+      res.redirect('/movie-item/'+req.params.pages);
+    }
+    else res.redirect('/'+req.params.pages);
   };
 }
-exports.rendereditmovie = function (req, res) {
-  res.render('admin-editmovie', {
-    username: req.user ? req.user.username : '',
-    messages: req.flash('error')
-  });
-}
+
 exports.logout = function (req, res) {
   req.logout();
   res.redirect('/');
 }
 exports.showprofile = function (req, res) {
-  res.render('user-profile', {
-    username: req.user ? req.user.username : '',
-    messages: req.flash('error')
+  Movie.findOne({"_id":req.params.movieid}, function (err, movies) {
+    if (err) {
+      return next(err);
+    } else {
+      res.render('user-profile', {
+        username: req.user ? req.user.username : '',
+        messages: req.flash('error'),movies,user:req.user
+      });
+    }
   });
+  
 }
 
 
-exports.addmovie = function (req, res, next) {
-  upload(req, res, function (err) {
-    console.log(JSON.stringify(req.files[0].filename).replace(/"/gi, ""));
-    console.log(req.body);
-    var movie = new Movie(req.body);
-    movie.poster = JSON.stringify(req.files[0].filename.replace(/"/gi, ""));
-    movie.save(function (err) {
-      if (err) {
-        next(err);
-      } else {
-        res.redirect('/');
-      }
-    });
-  });
-}

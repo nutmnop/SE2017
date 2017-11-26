@@ -62,10 +62,10 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/movie-list'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                         <%}else{%>
                             <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
-                            <%}%>
+                        <%}%>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.2s">
@@ -77,9 +77,11 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                            <a class="" href="/user-profile">
-                                <%=username%>
-                            </a>
+                                <%if(username!="admin"){%>
+                            <a class="" href="/user-profile"><%=username%></a>
+                            <%}else{%>
+                                <a class="" href="/admin-index"><%=username%></a>
+                            <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -111,7 +113,11 @@
                                 <div class="col-md-5">
                                     <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
 
-                                        <option>หนัง 1</option>
+                                            <% movies.forEach(function(movie) { %>
+                                                <option>
+                                                    <%=movie.title_th%>
+                                                </option>
+                                                <%})%>
 
                                     </select>
 
@@ -158,11 +164,11 @@
                                         </h5>
                                         <div class="dot-hr"></div>
                                         <span class="pull-left">
-                                            <b>Genre :</b>
-                                            <%=movie.type%>
+                                            
+                                            <%=movie.title_th%>
                                         </span>
                                         <span class="proerty-price pull-right">
-                                            <%=movie.length%> mins.</span>
+                                            <%=movie.length%> นาที</span>
                                     </div>
                                 </div>
                             </div>

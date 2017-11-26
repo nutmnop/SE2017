@@ -3,28 +3,37 @@ var User = require('mongoose').model('User');
 var passport = require('passport');
 
 module.exports = function (app) {
-
-  app.route('/register')
+//register
+  app.route('/register/:pages')
     .post(user.register)
     .get(user.renderregist);
-  app.route('/login')
-    .post(passport.authenticate('local', {
-      failureRedirect: '/register'
+  app.route('/register/movie-item/:pages')
+  .post(user.register)
+  .get(user.renderregist);
+//login
+  app.route('/login/:pages')
+    .post(passport.authenticate('local',  {
+      failureRedirect: '/register/index'
     }), (req, res) => {
       User.findOne({ username: req.body.username }, function (err, users) {
         if (users.usertype === 'customer') {
-          res.redirect('/');
+          console.log("param : "+req.params.pages);
+          if(req.params.pages==='index'){
+            res.redirect('/');
+          }else if(JSON.stringify(req.params.pages).length > 20){
+            res.redirect('/movie-item/'+req.params.pages);
+          }
+          else res.redirect('/'+req.params.pages);
+         
         } else res.redirect('/admin-index');
       });
     });
+//logout
   app.get('/logout', user.logout);
-  app.get('/admin-index', user.adminrender);//
-  app.route('/admin-editmovie')
-    .get(user.rendereditmovie)
-    .post(user.addmovie);
-  app.post('/admin-editmovie', user.addmovie);
+//showprofile
   app.get('/user-profile', user.showprofile);
-  app.post('/admin-editmovie2', function (req, res, next) {
-
-  });
+//admin
+  app.get('/admin-index', user.adminrender);
+ 
+  
 }

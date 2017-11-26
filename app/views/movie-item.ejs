@@ -61,7 +61,7 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/movie-item/<%=movies._id%>'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                         <%}else{%>
                             <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
                             <%}%>
@@ -76,9 +76,11 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                            <a class="" href="/user-profile">
-                                <%=username%>
-                            </a>
+                                <%if(username!="admin"){%>
+                            <a class="" href="/user-profile"><%=username%></a>
+                            <%}else{%>
+                                <a class="" href="/admin-index"><%=username%></a>
+                            <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -107,7 +109,11 @@
                                 <div class="col-md-5">
                                     <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
 
-                                        <option>หนัง 1</option>
+                                            <% movies_list.forEach(function(movie) { %>
+                                                <option>
+                                                    <%=movie.title_eng%>
+                                                </option>
+                                                <%})%>
 
                                     </select>
 
@@ -129,7 +135,8 @@
     <div class="container">
         <div class="clearfix padding-top-40">
             <h2>
-                <%=movies.title_eng%>
+                <%=movies.title_eng%> :
+                <%=movies.title_th%>
             </h2>
             <hr>
             <div class="col-md-4 p0">
@@ -184,6 +191,11 @@
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">เวลา</span>
                                     <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.length%> mins.</span>
+                                </li>
+
+                                <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">วันที่เข้าฉาย</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.startdate.toString().substring(0,15)%></span>
                                 </li>
 
 

@@ -78,9 +78,11 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                            <a class="" href="/user-profile">
-                                <%=username%>
-                            </a>
+                                <%if(username!="admin"){%>
+                            <a class="" href="/user-profile"><%=username%></a>
+                            <%}else{%>
+                                <a class="" href="/admin-index"><%=username%></a>
+                            <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -103,7 +105,13 @@
                         </div>
                         <div class="panel-body text-widget footer-menu">
                             <li>
-                                <a href="/admin-editmovie">แก้ไขภาพยนตร์</a>
+                                <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
+                            </li>
+                            <li>
+                                <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
+                            </li>
+                            <li>
+                                 <a href="/admin-allbranch">สาขาทั้งหมด</a>
                             </li>
 
                             <li>
@@ -134,7 +142,7 @@
                             <div class="col-sm-3 col-sm-offset-1">
                                 <div class="picture-container">
                                     <div class="picture">
-                                        <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
+                                        <img src="img/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
                                     </div>
                                 </div>
                             </div>
@@ -144,31 +152,20 @@
                                 <div class="form-group">
                                     <label>ชื่อ
                                     </label>
-                                    <input name="firstname" type="text" class="form-control">
+                                    <input name="firstname" type="text" class="form-control" value="Admin" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>สกุล
                                     </label>
-                                    <input name="lastname" type="text" class="form-control">
+                                    <input name="lastname" type="text" class="form-control" value="admin" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>ชื่อผู้ใช้
                                     </label>
-                                    <input name="username" type="text" class="form-control">
+                                    <input name="username" type="text" class="form-control" value="admin" disabled>
                                 </div>
                             </div>
-                            <div class="col-sm-3 padding-top-25">
-                                <div class="form-group">
-                                    <label>รหัสพนักงาน
-                                    </label>
-                                    <input name="admin_id" type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>รหัสสาขา
-                                    </label>
-                                    <input type="branch_id" type="text" class="form-control">
-                                </div>
-                            </div>
+                           
 
                         </div>
 

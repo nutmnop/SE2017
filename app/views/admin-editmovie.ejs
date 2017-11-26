@@ -16,9 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -78,9 +76,15 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                            <a class="" href="/user-profile">
-                                <%=username%>
-                            </a>
+                            <%if(username!="admin"){%>
+                                <a class="" href="/user-profile">
+                                    <%=username%>
+                                </a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index">
+                                        <%=username%>
+                                    </a>
+                                    <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -103,12 +107,20 @@
                         </div>
                         <div class="panel-body text-widget footer-menu">
                             <li>
-                                <a href="/admin-editmovie">ภาพยนตร์</a>
+                                <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
+                            </li>
+                            <li>
+                                <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
+                            </li>
+                            <li>
+                                <a href="/admin-allbranch">สาขาทั้งหมด</a>
                             </li>
 
                             <li>
                                 <a href="/admin-editshowtime">แก้ไขรอบฉาย</a>
                             </li>
+
+
 
 
 
@@ -120,46 +132,93 @@
                 </div>
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
-                    <form method='POST' action='/admin-editmovie' enctype="multipart/form-data">
+                    <div class="profiel-header">
+                        <h3>
+                            <%if(movies.length<1){%>
+                                เพิ่มภาพยนตร์
+                                <%}else{%>
+                                    แก้ไขข้อมูลภาพยนตร์
+                                    <%}%>
+                        </h3>
+                        <hr>
+                    </div>
+                    <%if(movies.length<1){%>
+                            <form method='POST' action='/admin-editmovie' enctype="multipart/form-data">
+                            <%}else{%>
+                                <form method='POST' action='/admin-editmovie/<%=movies._id%>' >
+                                <%}%>
+                    
 
                         <div class="clear">
 
                             <div class="col-sm-4 padding-top-25">
                                 <div class="form-group">
                                     <label>ชื่อเรื่องภาษาไทย</label>
-                                    <input name="title_th" type="text" class="form-control">
+                                    <input name="title_th" type="text" class="form-control" 
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.title_th.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
                                 <div class="form-group">
                                     <label>ชื่อเรื่องภาษาอังกฤษ</label>
-                                    <input name="title_eng" type="text" class="form-control">
+                                    <input name="title_eng" type="text" class="form-control"
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.title_eng.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
                                 <hr>
                                 <div class="col-md-15">
                                     <label>ประเภท</label>
                                     <br>
-                                    <select class="scrollpicker" name="type">
-                                        <option>Action</option>
-                                        <option>Adventure</option>
-                                        <option>War</option>
-                                        <option>Drama</option>
-                                        <option>Sci-Fi</option>
-                                        <option>Family</option>
-                                        <option>Thriller</option>
-                                        <option>Crime</option>
-                                        <option>Documentaries</option>
-                                        <option>Animation</option>
-                                        <option>Comedy</option>
-                                        <option>Erotic</option>
-                                        <option>Fantasy</option>
-                                        <option>Romantic</option>
-                                        <option>อื่นๆ</option>
+                                    <select class="scrollpicker" name="type"/>
+                                    <%if(movies.length>1){%>
+                                        <option <%if(movies.type === 'Action'){%> selected <%}%>>Action</option>
+                                        <option <%if(movies.type === 'Adventure'){%> selected <%}%>>Adventure</option>
+                                        <option <%if(movies.type === 'War'){%> selected <%}%>>War</option>
+                                        <option <%if(movies.type === 'Drama'){%> selected <%}%>>Drama</option>
+                                        <option <%if(movies.type === 'Sci-Fi'){%> selected <%}%>>Sci-Fi</option>
+                                        <option <%if(movies.type === 'Family'){%> selected <%}%>>Family</option>
+                                        <option <%if(movies.type === 'Thriller'){%> selected <%}%>>Thriller</option>
+                                        <option <%if(movies.type === 'Crime'){%> selected <%}%>>Crime</option>
+                                        <option <%if(movies.type === 'Documentaries'){%> selected <%}%>>Documentaries</option>
+                                        <option <%if(movies.type === 'Animation'){%> selected <%}%>>Animation</option>
+                                        <option <%if(movies.type === 'Comedy'){%> selected <%}%>>Comedy</option>
+                                        <option <%if(movies.type === 'Erotic'){%> selected <%}%>>Erotic</option>
+                                        <option <%if(movies.type === 'Fantasy'){%> selected <%}%> >Fantasy</option>
+                                        <option <%if(movies.type === 'Romantic'){%> selected <%}%>>Romantic</option>
+                                        <option <%if(movies.type === 'Horror'){%> selected <%}%>>Horror</option>
+                                        <option <%if(movies.type === 'อื่นๆ'){%> selected <%}%>>อื่นๆ</option>
+                                        <%}else{%>
+                                            <option>Action</option>
+                                            <option>Adventure</option>
+                                            <option>War</option>
+                                            <option>Drama</option>
+                                            <option>Sci-Fi</option>
+                                            <option>Family</option>
+                                            <option>Thriller</option>
+                                            <option>Crime</option>
+                                            <option>Documentaries</option>
+                                            <option>Animation</option>
+                                            <option>Comedy</option>
+                                            <option>Erotic</option>
+                                            <option>Fantasy</option>
+                                            <option>Romantic</option>
+                                            <option>Horror</option>
+                                            <option>อื่นๆ</option>
+                                            <%}%>   
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <br>
                                     <label>ความยาว (นาที)</label>
-                                    <input type="text" class="form-control" name="length">
+                                    <input type="text" class="form-control" name="length"
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.length.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
 
 
@@ -168,62 +227,101 @@
                             <div class="col-sm-4 padding-top-25">
                                 <div class="form-group">
                                     <label>ชื่อผู้กำกับ</label>
-                                    <input type="text" class="form-control" name="director">
+                                    <input type="text" class="form-control" name="director"
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.director.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                        >
                                 </div>
                                 <div class="form-group">
                                     <label>นักแสดงนำ</label>
-                                    <input type="text" class="form-control" name="actor">
+                                    <input type="text" class="form-control" name="actor"
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.actor.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
                                 <hr>
                                 <div class="col-md-15">
                                     <label>เรท</label>
                                     <br>
                                     <select id="lunchBegins" class="scrollpicker" name="rate">
-                                        <option>ท ทั่วไป</option>
-                                        <option>ส ส่งเสริม</option>
-                                        <option>น 13+</option>
-                                        <option>น 15+</option>
-                                        <option>น 18+</option>
-                                        <option>ฉ 20-</option>
+                                        <%if(movies.length>1){%>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'ททั่วไป'){%> selected <%}%>>ท ทั่วไป</option>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'สส่งเสริม'){%> selected <%}%>>ส ส่งเสริม</option>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'น13+'){%> selected <%}%>>น 13+</option>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'น15+'){%> selected <%}%>>น 15+</option>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'น18+'){%> selected <%}%>>น 18+</option>
+                                        <option<%if(movies.rate.toString().replace(/ /gi,"") === 'ฉ20-'){%> selected <%}%>>ฉ 20-</option>
+                                        <%}else{%>
+                                            <option>ท ทั่วไป</option>
+                                            <option>ส ส่งเสริม</option>
+                                            <option>น 13+</option>
+                                            <option>น 15+</option>
+                                            <option>น 18+</option>
+                                            <option>ฉ 20-</option>
+
+                                         <%}%>   
                                     </select>
+                                    
                                 </div>
                                 <br>
                                 <label>วันที่เข้าฉาย</label>
+                                <%if(movies.length>1){%>
+                                    <%=movies.startdate.toString().substring(0,15)%>
+                                    <%}else{%>
                                 <input type="date" class="form-control" name="startdate">
+                                <%}%>
 
                                 <div class="form-group">
                                     <br>
                                     <label>ตัวอย่างภาพยนตร์</label>
-                                    <input type="text" class="form-control" placeholder="http://" name="trailer">
+                                    <input type="text" class="form-control" placeholder="http://" name="trailer"
+                                    <%if(movies.length>1){%>
+                                        value =<%=movies.trailer.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
                             </div>
-
-                        </div>
+                            <div class="col-sm-3">
+                                  
+                                    <%if(movies.length>1){%>
+                            
+                                                <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+                            
+                                                    <div class="panel-body recent-property-widget">
+                                                        <img src="img/<%=movies.poster.replace(/"/gi,"")%>" >
+                                                    </div>
+                                                </div>
+                                    <%}%>
+                                            
+                                        </div>
+                        
+                        
 
                         <div class="clear">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>เรื่องย่อ</label>
-                                    <input name="synopsis" type="text" class="form-control">
+                                    <input name="synopsis" type="text" class="form-control"<%if(movies.length>1){%>
+                                        value =<%=movies.synopsis.toString().replace(/ /gi,"")%>
+                                    <%}%>
+                                    >
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-5">
-                            <input type='file' name='myimage' value='browse' placeholder="browse" />
-
+                                <%if(movies.length<1){%>
+                                โปสเตอร์
+                              <input type='file' name='myimage' value='browse' placeholder="browse" />
+                            <%}%>
                             <br>
                             <input type='submit' class='btn btn-finish btn-primary' value='save' />
                         </div>
-                    </form>
-
-
-
-
-
                 </div>
             </div>
-
+        </form>
         </div>
     </div>
 
