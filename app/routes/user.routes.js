@@ -31,7 +31,10 @@ module.exports = function (app) {
 //logout
   app.get('/logout', user.logout);
 //showprofile
-  app.get('/user-profile', user.showprofile);
+  app.route('/user-profile')
+   .get(user.showprofile)
+   .post(user.editprofile);
+  
 //admin
   app.get('/admin-index', user.adminrender);
  

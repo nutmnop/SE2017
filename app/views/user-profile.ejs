@@ -110,7 +110,7 @@
 
                                         <% movies.forEach(function(movie) { %>
                                             <option>
-                                                <%=movie.title_eng%>
+                                                <%=movie.title_th%>
                                             </option>
                                             <%})%>
 
@@ -150,12 +150,6 @@
                             <li>
                                 <a href="/user-payment">ประวัติการซื้อ</a>
                             </li>
-                            <li>
-                                <a href="/change-password">เปลี่ยนรหัสผ่าน</a>
-                            </li>
-
-
-
                         </div>
                     </div>
 
@@ -165,7 +159,7 @@
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
 
-                    <form action="" method="">
+                        <form action='/user-profile' method="post"/>
                         <div class="profiel-header">
                             <h3>
                                 ข้อมูลส่วนตัว
@@ -176,7 +170,7 @@
 
                         <div class="clear">
                             <div class="col-sm-3 padding-top-25">
-
+                                
                                 <div class="form-group">
                                     <label>ชื่อ
                                         <small>(required)</small>
@@ -206,6 +200,7 @@
                                     เบอร์โทรศัพท์
                                     <input name="phone" type="text" class="form-control" value=<%=user.phone%>>
                                 </div>
+                        
                             </div>
 
                         </div>
@@ -214,7 +209,7 @@
 
                         <div class="col-sm-5 col-sm-offset-1">
                             <br>
-                            <input type='button' class='btn btn-finish btn-primary' name='finish' value='บันทึกการแก้ไข' />
+                            <input type='submit' class='btn btn-finish btn-primary' name='finish' value='บันทึกการแก้ไข' />
                         </div>
                         <br>
                     </form>
@@ -252,8 +247,8 @@
                                     <a href="#">รอบฉาย</a>
                                 </li>
                                 <li>
-                                    <a href="/register">ลงชื่อเข้าใช้</a>
-                                </li>
+                                        <a href="/logout">ออกจากระบบ</a>
+                               </li>
                             </ul>
                         </div>
                     </div>

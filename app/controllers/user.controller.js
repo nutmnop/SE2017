@@ -1,6 +1,6 @@
 var User = require('mongoose').model('User');
 var Movie = require('mongoose').model('Movie');
-
+var ObjectId = require('mongodb').ObjectID;
 var crypto = require('crypto');
 
 var passport = require('passport');
@@ -91,7 +91,7 @@ exports.logout = function (req, res) {
   res.redirect('/');
 }
 exports.showprofile = function (req, res) {
-  Movie.findOne({"_id":req.params.movieid}, function (err, movies) {
+  Movie.find({}, function (err, movies) {
     if (err) {
       return next(err);
     } else {
@@ -102,6 +102,12 @@ exports.showprofile = function (req, res) {
     }
   });
   
+}
+exports.editprofile = function(req,res){
+  User.findOneAndUpdate({"_id":ObjectId(req.user.id)},req.body,function(err, movies){
+    if (err) return res.send(err);
+    return res.redirect('/user-profile');
+});
 }
 
 

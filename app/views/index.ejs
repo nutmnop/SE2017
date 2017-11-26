@@ -220,9 +220,15 @@
                                 <li>
                                     <a href="#">รอบฉาย</a>
                                 </li>
-                                <li>
-                                    <a href="/register">ลงชื่อเข้าใช้</a>
-                                </li>
+                                <%if(!username){%>
+                                    <li>
+                                        <a href="/register/register">ลงชื่อเข้าใช้</a>
+                                    </li>
+                                    <%}else{%>
+                                        <li>
+                                                <a href="/logout">ออกจากระบบ</a>
+                                    </li>
+                                    <%}%>
                             </ul>
                         </div>
                     </div>
