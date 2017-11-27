@@ -145,16 +145,15 @@
                                     <td width=300 align="center">จังหวัด</td>
                                     <td width=50 align="center" colspan="2">ตัวดำเนินการ</td>
                                 </tr>
+                                <%branch.forEach(function(b) { %>   
                                 <tr>
-                                    <td>สาขา 1</td>
-                                    <td>จังหวัด 1</td>
+                                    <td><%=b.branchname%></td>
+                                    <td><%=b.branchlocation%></td>
                                     <td>
-                                        <input type='button' class='btn btn-edit btn-primary' name='Edit' value='Edit' onclick="window.open('/admin-editbranch')"> 
-                                    </td>
-                                    <td>
-                                        <input type='button' class='btn btn-delete btn-primary' name='Delete' value='Delete' onclick="window.open('#')">   
+                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='view' onclick="window.open('/admin-editbranch')"> 
                                     </td>
                                 </tr>
+                                <%})%>
                             </table>
                         </div>    
 

@@ -45,6 +45,8 @@ module.exports = function () {
   require('../app/routes/index.routes')(app);
   require('../app/routes/user.routes')(app);
   require('../app/routes/movie.routes')(app);
+  require('../app/routes/branch.routes')(app);
+  require('../app/routes/theatre.routes')(app);
   app.use(express.static('./public'));
   app.use('*/assets',express.static('./public/assets'));
   app.use('*/bootstrap',express.static('./public/bootstrap'));
