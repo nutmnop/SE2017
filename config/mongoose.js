@@ -8,5 +8,10 @@ module.exports = function(){
 
   require('../app/models/user.model');
   require('../app/models/movie.model');
+  require('../app/models/branch.model');
+  require('../app/models/theatre.model');
+  require('../app/models/seat.model');
+
   return db;
+
 }
