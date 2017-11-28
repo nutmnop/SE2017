@@ -24,4 +24,5 @@ var MovieSchema = new Schema({
 
 
 
-mongoose.model('Movie',MovieSchema);
+ mongoose.model('Movie',MovieSchema);
+

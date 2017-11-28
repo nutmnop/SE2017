@@ -130,7 +130,7 @@
                     <form action="" method="">
                         <div class="profiel-header">
                             <h3>
-                                สาขาทั้งหมด
+                                โรงภาพยนตร์ทั้งหมด
 
                             </h3>
                             <hr>
@@ -139,16 +139,18 @@
                         <div class='clear'>
                             <table align="center" border="2" width="80%" bordercolor="#eaeaea">
                                 <tr>
-                                    <td width=300 align="center">ชื่อสาขา</td>
-                                    <td width=300 align="center">จังหวัด</td>
-                                    <td width=50 align="center" >ตัวดำเนินการ</td>
+                                    <td width=50 align="center">โรงที่</td>
+                                    <td width=300 align="center">ภาพยนตร์ที่ฉาย</td>
+                                    <td width=150 align="center" >จำนวนที่นั่งคงเหลือ</td>
+                                    <td width=50 align="center" ></td>
                                 </tr>
-                                <%branch.forEach(function(b) { %>   
+                                <%theatre.forEach(function(t) { %>   
                                 <tr>
-                                    <td><%=b.branchname%></td>
-                                    <td><%=b.branchlocation%></td>
+                                    <td align="center" ><%=t.theatrenum%></td>
+                                    <td align="center"><%=t.moviename%></td>
+                                    <td align="center"><%=t.availableseat%></td>
                                     <td>
-                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='เลือกสาขา' onclick="window.open('/admin-alltheatre/<%=b.branchname%>')"> 
+                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='แก้ไขรอบฉาย' onclick="window.open('/admin-editshowtime/<%=t.id%>')"> 
                                     </td>
                                 </tr>
                                 <%})%>

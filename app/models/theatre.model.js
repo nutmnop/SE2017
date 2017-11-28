@@ -5,7 +5,9 @@ var TheatreSchema = new Schema({
     theatrename: {type:String,unique:true,index:true,required:'Theatrename is required',trim:true},
     branchname: String,
     availableseat:{type:Number,default:72},
-    theatrenum:Number
+    theatrenum:Number,
+    moviename:{type:String,default:""},
+    shwowtime:[String],default:{}
   });
  
  mongoose.model('Theatre',TheatreSchema);

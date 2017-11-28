@@ -108,17 +108,9 @@
                                         <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
                                     </li>
                                     <li>
-                                         <a href="/admin-allbranch">สาขาทั้งหมด</a>
+                                         <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
                                     </li>
-        
-                                    <li>
-                                        <a href="/admin-editshowtime">แก้ไขรอบฉาย</a>
-                                    </li>
-        
-        
-
-
-                        </div>
+                               </div>
                     </div>
 
 
@@ -127,38 +119,11 @@
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
 
-                    <form action="" method="">
+                
                         <div class="profiel-header">
-                            <h3>รอบฉายประจำวัน</h3>
+                            <h3>รอบฉายประจำวันที่ <%=dates%></h3>
                             <hr>
                         </div>
-
-                            <!-- Choose edit -->
-                            <div class="properties-area recent-property" style="background-color: #838383;">
-                                <div class="container">
-                                    <div class="row  pr0 padding-top-40 properties-page">
-                                        <div class="col-md-10 padding-bottom-40 large-search">
-                                            <div class="search-form wow pulse">
-                                                <form action="" class=" form-inline">
-                                                    <div class="col-md-12">
-
-                                                        <div class="col-md-12">
-                                                            <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
-
-                                                                <option>สถานที่ 1</option>
-
-                                                            </select>
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                            </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End choose edit -->
 
                             <div class="col-sm-12 col-sm-offset-1">
                                 <br>
@@ -189,8 +154,6 @@
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <br>
                     <hr>
                     <form action="" method="">
                         <div class="profiel-header">
@@ -199,22 +162,13 @@
                         </div>
                         <div class="clear">  
                             <div class="col-sm-5 col-sm-offset-1 padding-top-25">
-                                <div class="col-md-15">
-                                    <label>โรงฉาย</label>  
-                                    <select id="lunchBegins" class="selectpicker">
-                                    <option>โรงภาพยนตร์ที่ 1</option> 
-                                    <option>โรงภาพยนตร์ที่ 2</option> 
-                                    </select>  
-                                                             
-                                </div>
-                                <br> 
                                 <div class="form-group">
                                         <label>เวลาเปิดโรง</label>
-                                        <input type="text" class="form-control" placeholder="00:00">
+                                        <input type="text" class="form-control" placeholder="00" name="hopen"> : <input type="text" class="form-control" placeholder="00" name="mopen">
                                 </div>
                                 <div class="form-group">
                                         <label>เวลาพักโรง (นาที)</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="break">
                                 </div>
                                 <br>
                                 <div class="col-sm-5">
@@ -224,19 +178,24 @@
                             <br>
                             <br>
                             </div>
+                            
                             <div class="col-sm-5 padding-top-25">
+                                <div class="form-group">
+                                            <label>เวลาปิดโรง</label>
+                                            <input type="text" class="form-control" placeholder="00" name="hclose"> : <input type="text" class="form-control" placeholder="00" name="mclose">
+                                    </div>
                                 <div class="col-md-15">
                                     <label>ภาพยนตร์</label>  
                                     <select id="lunchBegins" class="selectpicker">
-                                    <option>หนัง 1</option>
+                                    <%movies.forEach(function(movie){%>
+                                        <option><%=movie.title_th%></option>
+                                    <%})%>
+                                    
                                     </select>       
                                                              
                                 </div>
                                 <br>
-                                <div class="form-group">
-                                        <label>เวลาปิดโรง</label>
-                                        <input type="text" class="form-control" placeholder="00:00">
-                                </div>
+                               
                             <br>
                             <br>
                             <br>   
