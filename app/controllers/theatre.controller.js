@@ -126,3 +126,17 @@ exports.editshowtime = function (req, res, next) {
 
   });
 }
+exports.deleteshowtime=function(req,res,next){
+ 
+      Theatre.findOneAndUpdate({ "_id":ObjectId(req.params.thid) },{moviename:"",shwowtime:[]}, function (err, theatres) {
+       Theatre.find({branchname:theatres.branchname},function (err, theatre){
+        res.render('admin-alltheatre', {
+          username: req.user ? req.user.username : '', theatre
+        });
+       })
+       
+       
+       
+});
+}
+  

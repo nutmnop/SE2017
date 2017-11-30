@@ -142,9 +142,15 @@
                                     <td align="center" ><%=t.theatrenum%></td>
                                     <td align="center"><%=t.moviename%></td>
                                     <td align="center"><%=t.availableseat%></td>
+                                    
                                     <td>
-                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='แก้ไขรอบฉาย' onclick="window.open('/admin-editshowtime/<%=t.id%>')"> 
+                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='รอบฉาย' onclick="window.location.href='/admin-editshowtime/<%=t.id%>'"> 
                                     </td>
+                                    <%if(t.shwowtime.length>1){%>
+                                        <td>
+                                                <input type='button' class='btn btn-edit btn-primary' name='view' value='ลบรอบฉาย' onclick="window.location.href='/delete-showtime/<%=t.id%>'"> 
+                                         </td>
+                                    <%}%>
                                 </tr>
                                 <%})%>
                             </table>
