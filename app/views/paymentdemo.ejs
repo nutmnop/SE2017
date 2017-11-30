@@ -19,7 +19,7 @@
 
 
 
-  
+
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -251,16 +251,16 @@
 
                             <ul>
                                 <li>
-                                    <a href="#step1" data-toggle="tab">เลือกรอบฉาย</a>
+                                    <a href="step1" data-toggle="tab">เลือกรอบฉาย</a>
                                 </li>
                                 <li>
-                                    <a href="#step2" data-toggle="tab">เลือกที่นั่ง</a>
+                                    <a href="step2" data-toggle="tab">เลือกที่นั่ง</a>
                                 </li>
                                 <li>
-                                    <a href="#step3" data-toggle="tab">การชำระเงิน</a>
+                                    <a href="step3" data-toggle="tab">การชำระเงิน</a>
                                 </li>
                                 <li>
-                                    <a href="#step4" data-toggle="tab">เสร็จสิ้น</a>
+                                    <a href="step4" data-toggle="tab">เสร็จสิ้น</a>
                                 </li>
                             </ul>
 
@@ -273,18 +273,22 @@
                                             <div class="proerty-th ">
                                                 <div class="box-two  proerty-item">
                                                     <div class="item-thumb">
-                                                        <a href="movie-item.html">
-                                                            <img src="assets/img/demo/property-1.jpg">
+                                                        <a href="/movie-item/<%=movie._id%>">
+                                                            <img src="img/<%=movie.poster.replace(/"/gi, "")%>" >
                                                         </a>
                                                     </div>
                                                     <div class="item-entry overflow">
                                                         <h5>
-                                                            <a href="movie-item.html">La La Land </a>
+                                                            <a href="/movie-item/<%=movie._id%>">
+                                                                <%=movie.title_eng%>
+                                                            </a>
                                                         </h5>
                                                         <div class="dot-hr"></div>
                                                         <span class="pull-left">
-                                                            <b>Genre :</b> Romantic </span>
-                                                        <span class="proerty-price pull-right">120 mins.</span>
+                                                            <%=movie.title_th%>
+                                                        </span>
+                                                        <span class="proerty-price pull-right">
+                                                            <%=movie.length%> นาที</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -318,23 +322,27 @@
 
 
                                             <div class="col-sm-11 panel-group padding-top-25">
+
+
                                                 <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title  fqa-title">
-                                                            ชื่อโรงหนัง
-                                                        </h4>
-                                                    </div>
-                                                    <div class=" fqa-body panel-body">
-                                                        <a class="btn btn-primary btn-next ">12:30</a>
-                                                        <a class="btn btn-primary btn-next ">12:30</a>
-                                                        <a class="btn btn-primary btn-next">12:30</a>
-                                                        <a class="btn btn-primary btn-next ">12:30</a>
-                                                    </div>
+                                                   
+
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title  fqa-title">
+                                                                
+                                                            </h4>
+                                                        </div>
+                                                        
+                                                           
+                                                                <div class=" fqa-body panel-body">
+                                                                    <a class="btn btn-primary btn-next ">
+                                                                       
+                                                                    </a>
+                                                                </div>
+
+                                                              
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -351,7 +359,9 @@
                                                             ชื่อภาพยนตร์
                                                         </h4>
                                                         <div class="dot-hr"></div>
-                                                        <h5>La La Land</h5>
+                                                        <h5>
+                                                            <%=movie.title_th%>
+                                                        </h5>
 
                                                     </div>
 
@@ -364,7 +374,7 @@
                                                             เวลา
                                                         </h4>
                                                         <div class="dot-hr"></div>
-                                                        <h5>12:30</h5>
+                                                        <h5></h5>
 
                                                     </div>
 
@@ -411,9 +421,12 @@
 
                                             <div style="clear:both"></div>
                                         </div>
+                                        <!-- !-->
                                         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
                                         <script src="assets/js/jquery.seat-charts.js"></script>
+                                        
                                         <script>var price = 100; //price
+                                       
                                             $(document).ready(function () {
                                                 var $cart = $('#selected-seats'), //Sitting Area
                                                     $counter = $('#counter'), //Votes
@@ -423,7 +436,6 @@
                                                     map: [  //Seating chart
                                                         'aaaaaaaa',
                                                         'aaaaaaaa',
-                                                        '________',
                                                         'aaaaaaaa',
                                                         'aaaaaaaa',
                                                         'aaaaaaaa',
@@ -474,7 +486,7 @@
                                                     }
                                                 });
                                                 //sold seat
-                                                sc.get(['1_2', '4_4', '4_5', '6_6', '6_7', '8_5', '8_6', '8_7', '8_8', '10_1', '10_2']).status('unavailable');
+                                                sc.get().status('unavailable');
 
                                             });
                                             //sum total money
@@ -568,13 +580,13 @@
                                             <div class="proerty-th ">
                                                 <div class="box-two  proerty-item">
                                                     <div class="item-thumb">
-                                                        <a href="movie-item.html">
+                                                        <a href="/movie-item">
                                                             <img src="assets/img/demo/property-1.jpg">
                                                         </a>
                                                     </div>
                                                     <div class="item-entry overflow">
                                                         <h5>
-                                                            <a href="movie-item.html">La La Land </a>
+                                                            <a href="/movie-item">La La Land </a>
                                                         </h5>
                                                         <div class="dot-hr"></div>
                                                         <span class="pull-left">
@@ -728,14 +740,18 @@
                             <div class="footer-title-line"></div>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="movie-list.html">ภาพยนตร์</a>
+                                    <a href="/movie-list">ภาพยนตร์</a>
                                 </li>
-                                <li>
-                                    <a href="#">รอบฉาย</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">ลงชื่อเข้าใช้</a>
-                                </li>
+                                <%if(!username){%>
+                                    <li>
+                                            <a href="/register/payment">ลงชื่อเข้าใช้</a>
+                                    </li>
+                                <%}else{%>
+                                    <li>
+                                            <a href="/logout">ออกจากระบบ</a>
+                                    </li>
+
+                                <%}%>
                             </ul>
                         </div>
                     </div>

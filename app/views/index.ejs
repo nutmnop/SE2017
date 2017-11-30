@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/owl.transitions.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    
 </head>
 
 <body>
@@ -115,21 +116,15 @@
                     <h2>สัมผัสประสบการณ์เดือด</h2>
                     <p>ถ้าเพื่อนจะเอากรุงโรมพรุ่งนี้ วันนี้เราก็ต้องทำให้เสร็จ!</p>
                     <div class="search-form wow pulse" data-wow-delay="0.8s">
-
-                        <form action="" class=" form-inline">
-
+                    <label style="color:dimgrey"> ค้นหารอบฉาย</label>
+                        <form action="/payment" method="post" class=" form-inline">
+                                
                             <div class="form-group">
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
-
-                                    <option>สถานที่ 1</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
+                                
+                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
                                     <% movies.forEach(function(movie) { %>
                                         <option>
-                                            <%=movie.title_eng%>
+                                            <%=movie.title_th%>
                                         </option>
                                         <%})%>
 
@@ -138,9 +133,6 @@
                             <button style="width:40px;" class="btn search-btn" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
-
-
-
                         </form>
                     </div>
                 </div>
@@ -150,7 +142,7 @@
 
     <!-- property area -->
     <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 50px;">
-        <div class="container">
+        <div class="container ">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-10 text-center page-title">
                     <!-- /.feature title -->
@@ -159,14 +151,14 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="col-sm-12 ">
                 <% movies.forEach(function(movie) { %>
                     <div class="proerty-th">
                         <div class="col-sm-6 col-md-3 p0">
                             <div class="box-two proerty-item">
                                 <div class="item-thumb">
                                     <a href=/movie-item/<%=movie.id%>>
-                                        <img src="img/<%=movie.poster.replace(/"/gi,"")%>" >
+                                        <img src=img/<%=movie.poster.replace(/"/gi,"")%> >
                                         <!-- ตรงนี้เปลี่ยนเป็น dynamic-->
                                     </a>
                                 </div> 
@@ -178,7 +170,6 @@
                                     </h5>
                                     <div class="dot-hr"></div>
                                     <span class="pull-left">
-                                        
                                         <%=movie.title_th%>
                                     </span>
                                     <span class="proerty-price pull-right">

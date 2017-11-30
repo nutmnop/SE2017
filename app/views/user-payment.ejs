@@ -16,6 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
+    
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -58,37 +59,65 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
-                <div class="button navbar-right">
-                    <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
-                        <%}else{%>
-                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
-                            <%}%>
-                </div>
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/">หน้าหลัก</a>
-                    </li>
-
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/movie-list">ภาพยนตร์</a>
-                    </li>
-                    <%if(username){%>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <%if(username!="admin"){%>
-                            <a class="" href="/user-profile"><%=username%></a>
+                    <div class="button navbar-right">
+                        <%if(!username){%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                             <%}else{%>
-                                <a class="" href="/admin-index"><%=username%></a>
-                            <%}%>
+                                <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                                <%}%>
+                    </div>
+                    <ul class="main-nav nav navbar-nav navbar-right">
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/">หน้าหลัก</a>
                         </li>
-                        <%}%>
-                </ul>
-            </div>
+    
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/movie-list">ภาพยนตร์</a>
+                        </li>
+                        <%if(username){%>
+                            <li class="wow fadeInDown" data-wow-delay="0.2s">
+                                <a class="" href="/user-profile">
+                                    <%=username%>
+                                </a>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
     <!-- End of nav bar -->
+    <!-- Buy ticket -->
+    <div class="properties-area recent-property" style="background-color: #838383;">
+        <div class="container">
+            <div class="row  pr0 padding-top-40 properties-page">
+                <div class="col-md-12 padding-bottom-40 large-search">
+                    <div class="search-form wow pulse">
+                            <form action="/payment" method="post" class=" form-inline">
+                                
+                            <div class="form-group">
+                                
+                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
+                                    <% movies.forEach(function(movie) { %>
+                                        <option>
+                                            <%=movie.title_th%>
+                                        </option>
+                                        <%})%>
+
+                                </select>
+                            </div>
+                            <button style="width:40px;" class="btn search-btn" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                        </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <!--End buy ticket -->
+
 
 
     <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
@@ -96,24 +125,21 @@
             <div class="row">
 
                 <div class="blog-asside-right col-md-2">
-                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">เมนู</h3>
-                        </div>
-                        <div class="panel-body text-widget footer-menu">
-                                <li>
-                                        <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
-                                    </li>
+                        <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">เมนู</h3>
+                                </div>
+                                <div class="panel-body text-widget footer-menu">
                                     <li>
-                                        <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
+                                        <a href="/user-profile">แก้ไขข้อมูลส่วนตัว</a>
                                     </li>
+        
                                     <li>
-                                        <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
+                                        <a href="/user-payment">ประวัติการซื้อ</a>
                                     </li>
-
-
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                    
 
 
 
@@ -121,53 +147,50 @@
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
 
-                    <form action="" method="">
-                        <div class="profiel-header">
-                            <h3>
-                                ข้อมูลพนักงาน
 
-                            </h3>
-                            <hr>
-                        </div>
+                    <div class="profiel-header">
+                        <h3>
+                            ประวัติการซื้อ
 
-                        <div class="clear">
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="img/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
-                                    </div>
+                        </h3>
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-property-wrapper">
+
+                            <div class="section">
+                                <div class="s-property-content">
+                                    <table class="table table-dark  table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Movie</th>
+                                                <th>Seat</th>
+                                                <th>Number</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01/01/01</td>
+                                                <td>10.00</td>
+                                                <td>La La Land</td>
+                                                    <td>A10</td>
+                                                    <td>1</td>
+                                                    <td>180</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
                                 </div>
                             </div>
-
-                            <div class="col-sm-3 padding-top-25">
-
-                                <div class="form-group">
-                                    <label>ชื่อ
-                                    </label>
-                                    <input name="firstname" type="text" class="form-control" value="Admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>สกุล
-                                    </label>
-                                    <input name="lastname" type="text" class="form-control" value="admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>ชื่อผู้ใช้
-                                    </label>
-                                    <input name="username" type="text" class="form-control" value="admin" disabled>
-                                </div>
-                            </div>
-                           
-
                         </div>
-
-                        
-                        <br>
-                    </form>
-
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
@@ -194,11 +217,9 @@
                                 <li>
                                     <a href="/movie-list">ภาพยนตร์</a>
                                 </li>
+                                
                                 <li>
-                                    <a href="#">รอบฉาย</a>
-                                </li>
-                                <li>
-                                        <a href="/logout">ออกจากระบบ</a>
+                                    <a href="/register/user-payment">ลงชื่อเข้าใช้</a>
                                 </li>
                             </ul>
                         </div>
@@ -258,6 +279,7 @@
         </div>
 
     </div>
+
 
     <script src="assets/js/modernizr-2.6.2.min.js"></script>
 

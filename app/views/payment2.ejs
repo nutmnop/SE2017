@@ -9,12 +9,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rome Theatre</title>
+    <title>Rome Theatre | Movie</title>
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
+
 
 
     <link rel="stylesheet" href="assets/css/normalize.css">
@@ -60,7 +61,8 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/movie-item/<%=movies._id%>'"
+                            data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                         <%}else{%>
                             <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
                             <%}%>
@@ -75,11 +77,15 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <%if(username!="admin"){%>
-                            <a class="" href="/user-profile"><%=username%></a>
-                            <%}else{%>
-                                <a class="" href="/admin-index"><%=username%></a>
-                            <%}%>
+                            <%if(username!="admin"){%>
+                                <a class="" href="/user-profile">
+                                    <%=username%>
+                                </a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index">
+                                        <%=username%>
+                                    </a>
+                                    <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -89,88 +95,94 @@
         <!-- /.container-fluid -->
     </nav>
     <!-- End of nav bar -->
-
-
-    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+    <!-- Buy ticket -->
+    <div class="properties-area recent-property" style="background-color: #838383;">
         <div class="container">
-            <div class="row">
-
-                <div class="blog-asside-right col-md-2">
-                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">เมนู</h3>
-                        </div>
-                        <div class="panel-body text-widget footer-menu">
-                                <li>
-                                        <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
-                                    </li>
+            <div class="row  pr0 padding-top-40 properties-page">
+                <div class="col-md-12 padding-bottom-40 large-search">
+                    <div class="search-form wow pulse">
+                        <form action="" class=" form-inline">
+                            <div class="col-md-12">
 
 
-                        </div>
+                                <div class="col-md-5">
+                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
+
+
+                                        <option>
+                                            สาขา
+                                        </option>
+
+
+                                    </select>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="search-btn" type="submit" data-wow-delay="0.45s">ค้นหาสาขา</button>
+                                </div>
+
+                            </div>
+
                     </div>
-
-
-
                 </div>
-
-                <div class="blog-lst col-md-10 p0 profiel-container">
-
-                    <form action="" method="">
-                        <div class="profiel-header">
-                            <h3>
-                                ข้อมูลพนักงาน
-
-                            </h3>
-                            <hr>
-                        </div>
-
-                        <div class="clear">
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="img/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 padding-top-25">
-
-                                <div class="form-group">
-                                    <label>ชื่อ
-                                    </label>
-                                    <input name="firstname" type="text" class="form-control" value="Admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>สกุล
-                                    </label>
-                                    <input name="lastname" type="text" class="form-control" value="admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>ชื่อผู้ใช้
-                                    </label>
-                                    <input name="username" type="text" class="form-control" value="admin" disabled>
-                                </div>
-                            </div>
-                           
-
-                        </div>
-
-                        
-                        <br>
-                    </form>
-
-                </div>
+                </form>
             </div>
-
         </div>
     </div>
+    <!--End buy ticket -->
+    <div class="profiel-header">
+        <h3>
+            โรงภาพยนตร์ทั้งหมด
 
+        </h3>
+        <hr>
+    </div>
+
+    <div class='clear'>
+        <table align="center" border="2" width="80%" bordercolor="#eaeaea">
+            <tr>
+                <td width=50 align="center">แถว</td>
+                <td width=50 align="center">1</td>
+                <td width=50 align="center">2</td>
+                <td width=50 align="center">3</td>
+                <td width=50 align="center">4</td>
+                <td width=50 align="center">5</td>
+                <td width=50 align="center">6</td>
+                <td width=50 align="center">7</td>
+                <td width=50 align="center">8</td>
+                
+            </tr>
+            <%for(var i = 1;i<10;i++){%> 
+            <tr>
+                    <td align="center"><%=i%></td>
+                    <%for(var j = 1;j<9;j++){%>
+                        <td align="center">
+                                <button class='btn btn-edit btn-primary'  onclick="setColor(<%=i%><%=j%>)" id=<%=i%><%=j%>> <%=i%>_<%=j%></button>
+                            </td>
+                
+                
+                
+               <% } %>
+                
+                
+            </tr>
+                <%}%>
+        </table>
+    </div>    
+
+</form>
+<script>
+    
+    function setColor(btn) {
+        document.getElementById(btn).onclick = function(){
+ this.className = 'blueColor';
+}
+         
+    }
+</script>
+
+
+</div>
     <!-- Footer area-->
     <div class="footer-area">
 
@@ -197,9 +209,15 @@
                                 <li>
                                     <a href="#">รอบฉาย</a>
                                 </li>
-                                <li>
-                                        <a href="/logout">ออกจากระบบ</a>
-                                </li>
+                                <%if(!username){%>
+                                    <li>
+                                        <a href="/register/register">ลงชื่อเข้าใช้</a>
+                                    </li>
+                                    <%}else{%>
+                                        <li>
+                                            <a href="/logout">ออกจากระบบ</a>
+                                        </li>
+                                        <%}%>
                             </ul>
                         </div>
                     </div>

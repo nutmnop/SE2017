@@ -76,9 +76,11 @@
                         </li>
                         <%if(username){%>
                             <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <a class="" href="/user-profile">
-                                    <%=username%>
-                                </a>
+                                    <%if(username!="admin"){%>
+                                <a class="" href="/user-profile"><%=username%></a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index"><%=username%></a>
+                                <%}%>
                             </li>
                             <%}%>
                     </ul>
@@ -107,17 +109,8 @@
                                         <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
                                     </li>
                                     <li>
-                                         <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
+                                        <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
                                     </li>
-        
-                                    <li>
-                                        <a href="/admin-editshowtime">แก้ไขรอบฉาย</a>
-                                    </li>
-        
-        
-
-
-
                         </div>
                     </div>
 

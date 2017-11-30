@@ -16,7 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
-  
+
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/fontello.css">
@@ -58,32 +58,32 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
-                <div class="button navbar-right">
-                    <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
-                        <%}else{%>
-                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
-                            <%}%>
-                </div>
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/">หน้าหลัก</a>
-                    </li>
-
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/movie-list">ภาพยนตร์</a>
-                    </li>
-                    <%if(username){%>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <%if(username!="admin"){%>
-                            <a class="" href="/user-profile"><%=username%></a>
+                    <div class="button navbar-right">
+                        <%if(!username){%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                             <%}else{%>
-                                <a class="" href="/admin-index"><%=username%></a>
-                            <%}%>
+                                <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                                <%}%>
+                    </div>
+                    <ul class="main-nav nav navbar-nav navbar-right">
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/">หน้าหลัก</a>
                         </li>
-                        <%}%>
-                </ul>
-            </div>
+    
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/movie-list">ภาพยนตร์</a>
+                        </li>
+                        <%if(username){%>
+                            <li class="wow fadeInDown" data-wow-delay="0.2s">
+                                    <%if(username!="admin"){%>
+                                <a class="" href="/user-profile"><%=username%></a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index"><%=username%></a>
+                                <%}%>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -101,16 +101,16 @@
                             <h3 class="panel-title">เมนู</h3>
                         </div>
                         <div class="panel-body text-widget footer-menu">
-                                <li>
-                                        <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
-                                    </li>
-                                    <li>
-                                         <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
-                                    </li>
-                               </div>
+                            <li>
+                                <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
+                            </li>
+                            <li>
+                                <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
+                            </li>
+                            <li>
+                                <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
+                            </li>
+                        </div>
                     </div>
 
 
@@ -119,92 +119,100 @@
 
                 <div class="blog-lst col-md-10 p0 profiel-container">
 
-                
-                        <div class="profiel-header">
-                            <h3>รอบฉายประจำวันที่ <%=dates%></h3>
-                            <hr>
-                        </div>
 
-                            <div class="col-sm-12 col-sm-offset-1">
+                    <div class="profiel-header">
+                        <h3>รอบฉายประจำวันที่
+                            <%=dates%>
+                        </h3>
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-12 col-sm-offset-1">
+                        <br>
+                        <h4>
+                            <%=theatres.theatrename%>
                                 <br>
-                                <h4>โรงที่ 
-                                    1
-                                    หนัง 1
-                                </h4>
-                            </div>
-                            <div class="col-sm-2 col-sm-offset-1">
-                                    <input type='button' class='btn btn-showtime btn-primary' name='Showtime' value='00:00'>
-                            </div>
-                            <div class="col-sm-2">
-                                    <input type='button' class='btn btn-showtime btn-primary' name='Showtime' value='00:00'>
-                            </div>
-                            <div class="col-sm-2">
-                                    <input type='button' class='btn btn-showtime btn-primary' name='Showtime' value='00:00'>
-                            </div>
-                            <div class="col-sm-2">
-                                    <input type='button' class='btn btn-showtime btn-primary' name='Showtime' value='00:00'>
-                            </div>
-                            <div class="col-sm-2">
-                                    <input type='button' class='btn btn-showtime btn-primary' name='Showtime' value='00:00'>
-                            </div>
-                        
-                            
-                    </form>
+
+                                <hr> ภาพยนตร์เรื่อง
+                                <%=theatres.moviename%>
+                        </h4>
+                    </div>
                     <br>
                     <br>
-                    <br>
-                    <br>
-                    <hr>
-                    <form action="" method="">
-                        <div class="profiel-header">
-                            <h3>แก้ไขรอบฉาย</h3>
-                            <hr>
-                        </div>
-                        <div class="clear">  
-                            <div class="col-sm-5 col-sm-offset-1 padding-top-25">
-                                <div class="form-group">
-                                        <label>เวลาเปิดโรง</label>
-                                        <input type="text" class="form-control" placeholder="00" name="hopen"> : <input type="text" class="form-control" placeholder="00" name="mopen">
-                                </div>
-                                <div class="form-group">
-                                        <label>เวลาพักโรง (นาที)</label>
-                                        <input type="text" class="form-control" name="break">
-                                </div>
+                    <%if(theatres.shwowtime.length > 0){%>
+                        <%theatres.shwowtime.forEach(function(th){%>
+                            <div class="col-sm-2">
+                                <input type='button' class='btn btn-primary' name='Showtime' value=<%=th%>>
+                            </div>
+                            <%})%>
+
                                 <br>
-                                <div class="col-sm-5">
-                                    <input type='button' class='btn btn-finish btn-primary' name='Save' value='Save'>
-                                </div>
-                            <br>
-                            <br>
-                            <br>
-                            </div>
-                            
-                            <div class="col-sm-5 padding-top-25">
-                                <div class="form-group">
-                                            <label>เวลาปิดโรง</label>
-                                            <input type="text" class="form-control" placeholder="00" name="hclose"> : <input type="text" class="form-control" placeholder="00" name="mclose">
-                                    </div>
-                                <div class="col-md-15">
-                                    <label>ภาพยนตร์</label>  
-                                    <select id="lunchBegins" class="selectpicker">
-                                    <%movies.forEach(function(movie){%>
-                                        <option><%=movie.title_th%></option>
-                                    <%})%>
-                                    
-                                    </select>       
-                                                             
-                                </div>
                                 <br>
-                               
-                            <br>
-                            <br>
-                            <br>   
-                            </div>
-                        </div> 
-                    </form>
+                                <br>
+                                <br>
+
+                                <%}%>
+                                    <hr>
+                                    <%if(theatres.shwowtime.length<1){%>
+                                        <form action="/admin-editshowtime/<%=theatres._id%>" method="post">
+                                            <div class="profiel-header">
+                                                <h3>แก้ไขรอบฉาย</h3>
+                                                <hr>
+                                            </div>
+                                            <div class="clear">
+
+
+                                                <div class="col-sm-5 col-sm-offset-1 padding-top-25">
+
+                                                    <div class="form-group">
+
+                                                        <label>เวลาเปิดโรง</label>
+
+                                                        <input type="time" class="form-control" placeholder="00:00" name="timeopen" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>เวลาพักโรง (นาที)</label>
+                                                        <input type="time" class="form-control" name="timebreak">
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-sm-5">
+                                                        <input type='submit' class='btn btn-finish btn-primary' name='Save' value='Save'>
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                </div>
+
+                                                <div class="col-sm-5 padding-top-25">
+                                                    <div class="form-group">
+                                                        <label>เวลาปิดโรง</label>
+                                                        <input type="time" class="form-control" placeholder="00:00" name="timeclose">
+                                                    </div>
+                                                    <div class="col-md-15">
+                                                        <label>ภาพยนตร์</label>
+                                                        <select id="lunchBegins" class="selectpicker" name="title_th">
+                                                            <%movies.forEach(function(movie){%>
+                                                                <option>
+                                                                    <%=movie.title_th%>
+                                                                </option>
+                                                                <%})%>
+
+                                                        </select>
+
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                </div>
+
+                                                <%}%>
+
+                                            </div>
+                                        </form>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -237,7 +245,7 @@
                                     <a href="#">รอบฉาย</a>
                                 </li>
                                 <li>
-                                        <a href="/logout">ออกจากระบบ</a>
+                                    <a href="/logout">ออกจากระบบ</a>
                                 </li>
                             </ul>
                         </div>

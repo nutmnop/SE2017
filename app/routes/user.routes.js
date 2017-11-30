@@ -37,6 +37,7 @@ module.exports = function (app) {
   
 //admin
   app.get('/admin-index', user.adminrender);
- 
+//payment
+    app.get('/user-payment',user.userpayment);
   
 }

@@ -16,7 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
- 
+
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -76,9 +76,11 @@
                         </li>
                         <%if(username){%>
                             <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <a class="" href="/user-profile">
-                                    <%=username%>
-                                </a>
+                                    <%if(username!="admin"){%>
+                                <a class="" href="/user-profile"><%=username%></a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index"><%=username%></a>
+                                <%}%>
                             </li>
                             <%}%>
                     </ul>
@@ -100,24 +102,15 @@
                             <h3 class="panel-title">เมนู</h3>
                         </div>
                         <div class="panel-body text-widget footer-menu">
-                                <li>
-                                        <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
-                                    </li>
-                                    <li>
-                                         <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
-                                    </li>
-        
-                                    <li>
-                                        <a href="/admin-editshowtime">แก้ไขรอบฉาย</a>
-                                    </li>
-        
-        
-
-
-
+                            <li>
+                                <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
+                            </li>
+                            <li>
+                                <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
+                            </li>
+                            <li>
+                                <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
+                            </li>
                         </div>
                     </div>
 
@@ -141,19 +134,23 @@
                                 <tr>
                                     <td width=300 align="center">ชื่อสาขา</td>
                                     <td width=300 align="center">จังหวัด</td>
-                                    <td width=50 align="center" >ตัวดำเนินการ</td>
+                                    <td width=50 align="center">ตัวดำเนินการ</td>
                                 </tr>
-                                <%branch.forEach(function(b) { %>   
-                                <tr>
-                                    <td><%=b.branchname%></td>
-                                    <td><%=b.branchlocation%></td>
-                                    <td>
-                                        <input type='button' class='btn btn-edit btn-primary' name='view' value='เลือกสาขา' onclick="window.open('/admin-alltheatre/<%=b.branchname%>')"> 
-                                    </td>
-                                </tr>
-                                <%})%>
+                                <%branch.forEach(function(b) { %>
+                                    <tr>
+                                        <td>
+                                            <%=b.branchname%>
+                                        </td>
+                                        <td>
+                                            <%=b.branchlocation%>
+                                        </td>
+                                        <td>
+                                            <input type='button' class='btn btn-edit btn-primary' name='view' value='เลือกสาขา' onclick="window.open('/admin-alltheatre/<%=b.branchname%>')">
+                                        </td>
+                                    </tr>
+                                    <%})%>
                             </table>
-                        </div>    
+                        </div>
 
                     </form>
 
@@ -187,7 +184,7 @@
                                 <li>
                                     <a href="/movie-list">ภาพยนตร์</a>
                                 </li>
-                               
+
                                 <li>
                                     <a href="/logout">ออกจากระบบ/a>
                                 </li>

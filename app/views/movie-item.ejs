@@ -94,39 +94,27 @@
    <div class="properties-area recent-property" style="background-color: #838383;">
         <div class="container">
             <div class="row  pr0 padding-top-40 properties-page">
-                <div class="col-md-12 padding-bottom-40 large-search">
-                    <div class="search-form wow pulse">
-                        <form action="" class=" form-inline">
-                            <div class="col-md-12">
-
-                                <div class="col-md-5">
-                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
-
-                                        <option>สถานที่ 1</option>
-
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
-
+                    <div class="search-form wow pulse" data-wow-delay="0.8s">
+                            <label style="color:dimgrey"> ค้นหารอบฉาย</label>
+                                <form action="/payment" method="post" class=" form-inline">
+                                        
+                                    <div class="form-group">
+                                        
+                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
                                             <% movies_list.forEach(function(movie) { %>
                                                 <option>
-                                                    <%=movie.title_eng%>
+                                                    <%=movie.title_th%>
                                                 </option>
                                                 <%})%>
-
-                                    </select>
-
-                                </div>
-                                <div class="col-md-2">
-                                <button class="search-btn" type="submit" data-wow-delay="0.45s">รอบฉาย</button>
+        
+                                        </select>
+                                    </div>
+                                    <button style="width:40px;" class="btn search-btn" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
                             </div>
-
-                            </div>
-
-                    </div>
-                </div>
-                </form>
+                
             </div>
         </div>
     </div>

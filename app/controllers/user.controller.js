@@ -109,5 +109,17 @@ exports.editprofile = function(req,res){
     return res.redirect('/user-profile');
 });
 }
-
+exports.userpayment = function(req,res){
+  Movie.find({}, function (err, movies) {
+    if (err) {
+      return next(err);
+    } else {
+      res.render('user-payment', {
+        username: req.user ? req.user.username : '',
+        messages: req.flash('error'),movies,user:req.user
+      });
+    }
+  });
+  
+}
 
