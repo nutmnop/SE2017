@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <h4>Rome Theatre</h4>
+                    <h4 style="color:#f0f0f0;">Rome Theatre</h4>
                 </a>
             </div>
 
@@ -91,43 +91,55 @@
 
 
 
-    <!-- Buy ticket -->
-    <div class="properties-area recent-property" style="background-color: #838383;">
+   <!-- Buy ticket -->
+   <div class="properties-area recent-property" style="background-color: #424242;">
         <div class="container">
             <div class="row  pr0 padding-top-40 properties-page">
                 <div class="col-md-12 padding-bottom-40 large-search">
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
-                                <label style="color:dimgrey"> ค้นหารอบฉาย</label>
-                                    <form action="/payment" method="post" class=" form-inline">
-                                            
-                                        <div class="form-group">
-                                            
-                                            <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
-                                                <% movies.forEach(function(movie) { %>
-                                                    <option>
-                                                        <%=movie.title_th%>
-                                                    </option>
-                                                    <%})%>
-            
-                                            </select>
-                                        </div>
-                                        <button style="width:40px;" class="btn search-btn" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                                
+                                          <form action="/payment" method="post" class=" form-inline">
+                                          <div class="form-group">
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกสาขา">
+                                                          <% bh.forEach(function(bh) { %>
+                                                              <option>
+                                                                  <%=bh.branchname%>
+                                                              </option>
+                                                              <%})%>
+                                                  </select>
+                                              </div>
+                                          <div class="form-group">
+                                              
+                                              
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์"
+                                                  name="moviename">
+                                                  <% movies.forEach(function(movie) { %>
+                                                      <option>
+                                                          <%=movie.title_th%>
+                                                      </option>
+                                                      <%})%>
+              
+                                              </select>
+                                          </div>
+                                          <button style="width:40px;" class="btn search-btn" type="submit">
+                                              <i class="fa fa-search"></i>
+                                          </button>
+                                      </form>
+                                  </div>
+                </div>
+
             </div>
         </div>
     </div>
     <!--End buy ticket -->
 
     <!-- property area -->
-    <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 50px;">
+    <div class="content-area home-area-1 recent-property" style=" padding-bottom: 50px;">
         <div class="container">
                 <div class="col-md-10 col-md-offset-1 col-sm-10 text-center page-title">
                         <!-- /.feature title -->
-                        <h2>ภาพยนตร์</h2>
-                        <hr>
+                        <h2 style="color:#f0f0f0;">ภาพยนตร์</h2>
+           
                     </div>
             <div class="row">
 

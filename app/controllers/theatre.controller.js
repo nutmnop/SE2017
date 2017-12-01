@@ -89,12 +89,12 @@ exports.editshowtime = function (req, res, next) {
         } else {
           for (var i = 0; i < theatres.shwowtime.length; i++) {
             for (var j = 1; j <= 9; j++) {
-              for (var k = 1; k <= 8; k++) {
+              for (var k = 1; k <= 18; k++) {
                 console.log(theatres.shwowtime[i]);
                 var seat = new Seat();
                 seat.seatname = theatres.theatrename + " showtime " + theatres.shwowtime[i] +" แถวที่ "+j+" ที่นั่งที่ "+k;
                 seat.showtime = theatres.shwowtime[i];
-                seat.theatrenumber = theatres.theatrenumber;
+                seat.theatrenumber = theatres.theatrenum;
                 seat.moviename = JSON.stringify(req.body.title_th);
                 if (j == 1 || j == 2) {
                   seat.cost = 200;
@@ -107,23 +107,18 @@ exports.editshowtime = function (req, res, next) {
               }
             }
           }
-         
-          res.render('admin-editshowtime', {
-            username: req.user ? req.user.username : '',
-            dates,
-            movies,
-            theatres, data: req.body
-          });
+          
         }
       });
-
-
-
-
-
-
+      Theatre.findOne({ "_id": ObjectId(req.params.theatreid) }, function (err, theatres) {
+        res.render('admin-editshowtime', {
+          username: req.user ? req.user.username : '',
+          dates,
+          movies,
+          theatres, data:req.body
+        });
+      });
     }
-
   });
 }
 exports.deleteshowtime=function(req,res,next){

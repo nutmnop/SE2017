@@ -53,9 +53,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
-                    <h4>Rome Theatre</h4>
-                </a>
+                <a class="navbar-brand" style="color:#f0f0f0;" href="index.html">
+                        <h4>Rome Theatre</h4>
+                    </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -116,12 +116,22 @@
                     <h2>สัมผัสประสบการณ์เดือด</h2>
                     <p>ถ้าเพื่อนจะเอากรุงโรมพรุ่งนี้ วันนี้เราก็ต้องทำให้เสร็จ!</p>
                     <div class="search-form wow pulse" data-wow-delay="0.8s">
-                    <label style="color:dimgrey"> ค้นหารอบฉาย</label>
-                        <form action="/payment" method="post" class=" form-inline">
-                                
+                  
+                            <form action="/payment" method="post" class=" form-inline">
+                            <div class="form-group">
+                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกสาขา">
+                                            <% bh.forEach(function(bh) { %>
+                                                <option>
+                                                    <%=bh.branchname%>
+                                                </option>
+                                                <%})%>
+                                    </select>
+                                </div>
                             <div class="form-group">
                                 
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
+                                
+                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์"
+                                    name="moviename">
                                     <% movies.forEach(function(movie) { %>
                                         <option>
                                             <%=movie.title_th%>
@@ -141,12 +151,12 @@
     </div>
 
     <!-- property area -->
-    <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 50px;">
+    <div class="content-area home-area-1 recent-property padding-bottom: 50px;">
         <div class="container ">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-10 text-center page-title">
                     <!-- /.feature title -->
-                    <h2>ภาพยนตร์</h2>
+                    <h2 style="color:#f0f0f0;">ภาพยนตร์</h2>
                     <hr>
                 </div>
             </div>

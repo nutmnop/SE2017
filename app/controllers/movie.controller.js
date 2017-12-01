@@ -1,6 +1,7 @@
 var Movie = require('mongoose').model('Movie');
 var ObjectId = require('mongodb').ObjectID;
 var multer = require('multer');
+var Branch = require('mongoose').model('Branch');
 var crypto = require('crypto');
 var path = require('path');
 var storage = multer.diskStorage({
@@ -20,10 +21,12 @@ exports.list = function(req,res) {
     if (err) {
       return next(err);
     } else {
+      Branch.find({},function(err,bh){
   res.render('movie-list', {
-    username: req.user ? req.user.username : '', movies
+    username: req.user ? req.user.username : '', movies,bh
   });
-  }
+  })
+}
 });
 }
 exports.item = function(req,res) {
@@ -39,10 +42,12 @@ exports.item = function(req,res) {
            console.log(movies);
           }
         }
+        Branch.find({},function(err,bh){
         res.render('movie-item', {
-          username: req.user ? req.user.username : '',movies,movies_list
+          username: req.user ? req.user.username : '',movies,movies_list,bh
         });
-      }
+      })
+    }
     });
  }
 exports.renderaddmovie = function (req, res) {

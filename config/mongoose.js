@@ -11,7 +11,7 @@ module.exports = function(){
   require('../app/models/branch.model');
   require('../app/models/theatre.model');
   require('../app/models/seat.model');
-
+  require('../app/models/payment.model');
   return db;
 
 }

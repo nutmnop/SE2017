@@ -16,7 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
-
+   
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -53,140 +53,139 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <h4>Rome Theatre</h4>
+                    <h4 style="color:#f0f0f0;">Rome Theatre</h4>
                 </a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
-                <div class="button navbar-right">
-                    <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/movie-item/<%=movies._id%>'"
-                            data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
-                        <%}else{%>
-                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
-                            <%}%>
-                </div>
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/">หน้าหลัก</a>
-                    </li>
-
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/movie-list">ภาพยนตร์</a>
-                    </li>
-                    <%if(username){%>
+                    <div class="button navbar-right">
+                        <%if(!username){%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                            <%}else{%>
+                                <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                                <%}%>
+                    </div>
+                    <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                            <%if(username!="admin"){%>
+                            <a class="" href="/">หน้าหลัก</a>
+                        </li>
+    
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/movie-list">ภาพยนตร์</a>
+                        </li>
+                        <%if(username){%>
+                            <li class="wow fadeInDown" data-wow-delay="0.2s">
                                 <a class="" href="/user-profile">
                                     <%=username%>
                                 </a>
-                                <%}else{%>
-                                    <a class="" href="/admin-index">
-                                        <%=username%>
-                                    </a>
-                                    <%}%>
-                        </li>
-                        <%}%>
-                </ul>
-            </div>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
     <!-- End of nav bar -->
-    <!-- Buy ticket -->
-    <div class="properties-area recent-property" style="background-color: #838383;">
+    <div class="content-area submit-property padding-top-40" >
         <div class="container">
-            <div class="row  pr0 padding-top-40 properties-page">
-                <div class="col-md-12 padding-bottom-40 large-search">
-                    <div class="search-form wow pulse">
-                        <form action="" class=" form-inline">
-                            <div class="col-md-12">
 
+            <div class="col-md-12">
 
-                                <div class="col-md-5">
-                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
+                <div class=" text-center">
 
+                    <h5 class="btn-primary col-md-3 " style="background-color:#191919;color:#fff;" disabled="disable">เลือกรอบฉาย</a>
+                        <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#FDC600;color:#fff;">เลือกที่นั่ง</a>
+                            <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#FDC600;color:#fff;">ชำระเงิน</a>
+                                <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#FDC600;color:#fff;">เสร็จสิ้น</a>
+                </div>
 
-                                        <option>
-                                            สาขา
-                                        </option>
-
-
-                                    </select>
-
+                <div class="box-for2 overflow" >
+                    <div class="col-md-12 col-xs-12 ">
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="proerty-th ">
+                                <div class="box-two  proerty-item">
+                                    <div class="item-thumb">
+                                        <a href="/movie-item/<%=movie._id%>">
+                                            <img src="img/<%=movie.poster.replace(/"/gi,"")%>" >
+                                        </a>
+                                    </div>
+                                    <div class="item-entry overflow">
+                                        <h5>
+                                            <a href="/movie-item/<%=movie._id%>"><%=movie.title_eng%> </a>
+                                        </h5>
+                                        <div class="dot-hr"></div>
+                                        <span class="pull-left">
+                                                <%=movie.title_th%> </span>
+                                        <span class="proerty-price pull-right">  <%=movie.length%>  นาที </span>
+                                    </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <button class="search-btn" type="submit" data-wow-delay="0.45s">ค้นหาสาขา</button>
-                                </div>
+                            </div>
+                        </div>
 
+
+                        <div class="col-sm-7">
+                            <div class="col-sm-11 padding-top-40">
+                                <form action="" class=" form-inline">
+
+                                    <div class="col-md-5">
+                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกสาขา">
+
+                                            <option>สถานที่ 1</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="เลือกภาพยนตร์">
+
+                                            <option>หนัง 1</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="search-btn" type="submit" data-wow-delay="0.45s">รอบฉาย</button>
+                                    </div>
+                                </form>
                             </div>
 
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--End buy ticket -->
-
-    <div class="container">
-        <div class="clearfix padding-top-40">
-            <h2>
-                <%=movie.title_eng%> :
-                    <%=movie.title_th%>
-            </h2>
-            <hr>
-            <div class="col-md-4 p0">
-                <aside class="sidebar sidebar-property blog-asside-right property-style2">
-
-                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-
-                        <div class="panel-body recent-property-widget">
-                            <img src="img/<%=movie.poster.replace(/"/gi, "")%>" >
-                        </div>
-                    </div>
-                    <div class="col-sm-11 panel-group padding-top-25">
-                        <div class="panel panel-default">
                             <%theatres.forEach(function(th){%>
-                                <div class="panel-heading">
-                                    <h4 class="panel-title  fqa-title">
-                                        <%=th.theatrename%>
-                                    </h4>
-                                </div>
-                                <%th.shwowtime.forEach(function(sh){%>
-                                    <%if(!username){%>
-                                        <div class=" fqa-body panel-body">
-                                            <a class="btn btn-primary " href="/register/payment/<%=moviename%>">
-                                                <%=sh%>
-                                            </a>
-                                        </div>
-
+                            <div class="col-sm-11 panel-group padding-top-25">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title  fqa-title">
+                                            <%=th.theatrename%>
+                                        </h4>
+                                    </div>
+                                    <!-- ลูปตรงนี้นาจา -->
+                                    
+                                    <div class=" fqa-body panel-body">
+                                            <%th.shwowtime.forEach(function(sh){%>
+                                            <%if(parseFloat(sh)>14){%>
+                                                <%if(username){%>
+                                        <a class="btn btn-primary btn-next " href=/payment2/<%=th.branchname%>/<%=th.theatrenum%>/<%=sh%>><%=sh%></a>
                                         <%}else{%>
-                                            <div class=" fqa-body panel-body">
-                                                <a class="btn btn-primary" href="/payment2/<%=th.branchname%>/<%=th.theatrenum%>/<%=sh%>">
-                                                    <%=sh%>
-                                                </a>
-                                            </div>
-                                            <%}%>
-
-                                                <%})%>
-                                                    <%})%>
+                                            <a class="btn btn-primary btn-next " href=/register/index><%=sh%></a>
+                                        <%}%>
+                                        <%}else{%>
+                                        <a class="btn btn-primary btn-next " ><%=sh%></a>
+                                         <%}%>
+                                        <%})%>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <%})%>
                         </div>
                     </div>
-
-                </aside>
+                    <!--  End step 1 -->
+                </div>
             </div>
-
-
-
-
-
-
         </div>
-
     </div>
+
+
+
 
 
 
@@ -211,20 +210,14 @@
                             <div class="footer-title-line"></div>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="/movie-list">ภาพยนตร์</a>
+                                    <a href="movie-list.html">ภาพยนตร์</a>
                                 </li>
                                 <li>
                                     <a href="#">รอบฉาย</a>
                                 </li>
-                                <%if(!username){%>
-                                    <li>
-                                        <a href="/register/register">ลงชื่อเข้าใช้</a>
-                                    </li>
-                                    <%}else{%>
-                                        <li>
-                                            <a href="/logout">ออกจากระบบ</a>
-                                        </li>
-                                        <%}%>
+                                <li>
+                                    <a href="register.html">ลงชื่อเข้าใช้</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

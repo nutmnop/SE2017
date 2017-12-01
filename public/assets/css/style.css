@@ -10,8 +10,8 @@ body {
     margin:0;
     font-size:14px;
     line-height: 28px;
-    color: #777; 
-    background: #fff; 
+    color: #7b7c7d; 
+    background: #272727; 
     position: relative;
 }
 /*           Font Smoothing      */
@@ -25,6 +25,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-s
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4{
     font-weight: 400; 
+  
 }
 
 h1, .h1 {
@@ -53,7 +54,7 @@ p{
     line-height: 1.6180em;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
-    color: #999999;
+    color: #f0f0f0;
     font-weight: 300;
     line-height: 1;
 }
@@ -690,7 +691,7 @@ label small{
 
 
 .navbar-default .navbar-nav > li > a{
-    color: #929292;
+    color: #f0f0f0;
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
@@ -698,7 +699,7 @@ label small{
 
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #929292;
+    color: #f0f0f0;
     background-color: transparent;
 }
 .navbar-nav > li > a {
@@ -734,15 +735,14 @@ label small{
 .navbar-nav.navbar-right:last-child{
     margin-right: 20px
 }
-.navbar-brand {
 
-}
 .main-nav {
     padding-top: 10px;
 }
 .button.navbar-right {
     padding-top: 10px;
 }
+
 .nav-button {
     background-color: #c2c2c2;
     border: medium none;
@@ -769,7 +769,7 @@ label small{
 }
 .navbar-default {
     background-image: none;
-    background-color: #fff;
+    background-color: #f0f0f0;
     background-repeat: repeat-x;
     border-radius: 4px;
     box-shadow: none;
@@ -779,15 +779,16 @@ label small{
 }
 .navbar-default {
     background-image: none;
-    background-color: #FFF;
+    background-color: #191919;
     background-repeat: repeat-x;
     border-radius: 0px;
     box-shadow: none;
     border-left: none;
     border-right: none;
+    border-bottom-color: #353839;
 }
 .nav-tabs > li > a{
-    color: #666;
+    color: #f0f0f0;
     font-weight: 300;
     border-width: 4px;
 }
@@ -795,7 +796,7 @@ label small{
     border-color: transparent transparent #FDC600;
     border-style: solid;
     border-width: 4px;
-    color: #666666;
+    color: #f0f0f0;
     cursor: default;
     font-weight: 700;
     outline: none;
@@ -1016,16 +1017,16 @@ label small{
 
 .slider-area{
     position: relative;
-    height: 630px;
+    height: 580px;
 }
 #bg-slider .item img{
     width: 100%;
-    height: 630px;
+    height: 580px;
 }
 
 .slider-content{
     position: absolute;
-    top: 35%;
+    top: 40%;
     text-align: center;
     color: #FFF;
     width: 100%;
@@ -1115,7 +1116,7 @@ page-header
     letter-spacing: 2px;
 }
 .content-area{
-    background-color: #FCFCFC; padding-bottom: 60px;
+    background-color: #272727; padding-bottom: 60px;
 }
 .layout-switcher a{
     font-size: 25px;
@@ -1378,6 +1379,7 @@ Asside widgets CSS
     margin: 10px 0px;
     font-size: 30px;
     font-weight: 300;
+    
     text-transform: uppercase;
     letter-spacing: 4px;
 }
@@ -1714,23 +1716,24 @@ proerty-th
 }
 .proerty-th .proerty-item{
     background-color: #FFF; 
+    color:#7b7c7d;
     margin: 10px;
 }
 .proerty-th .proerty-item .item-thumb{
     position: relative;
 }
 .proerty-th .proerty-item:hover  .item-thumb img{
-    opacity: 1;
+    opacity: 0.7;
 }
 .proerty-th .proerty-item .item-thumb:hover .tm_mask {
-    opacity: 1;
+    opacity: 0.7;
 }
 .proerty-th .proerty-item  .item-thumb img{
     transition: all 0.2s linear 0s;
     display: block;
     position: relative;
     max-width:100%;
-    opacity: 0.7;
+    opacity: 1;
     
 }
 .proerty-th .proerty-item  .item-entry{
@@ -1791,7 +1794,7 @@ proerty-th-list
     float: left;
 } 
 .proerty-th-list .col-md-4 .item-thumb img {
-    opacity: 0.7;
+    opacity: 1;
     height: 230px;
     vertical-align: middle;
     border: 0px none;
@@ -1800,7 +1803,7 @@ proerty-th-list
 }
 
 .properties-page .box-two:hover .item-thumb img {
-    opacity:1; 
+    opacity:0.7; 
 }
 
 .proerty-th-list .col-md-4 .item-entry{
@@ -2235,6 +2238,7 @@ single property page
 }
 .register-area{
     padding: 40px;
+    
 }
 
 /*=====================================
@@ -2466,6 +2470,13 @@ count-area
     box-shadow: none;
     background-color: #FFF;
 }
+.box-for2{
+    padding: 10px 0px;
+    border: 1px solid #424242;;
+    transition: all 0.2s ease 0s;
+    box-shadow: none;
+    background-color: #424242;;
+}
 .more-entry a{
     color: #000;
     font-size: 19px;
@@ -2635,6 +2646,7 @@ padding-bottom: 15px;
 .login-blocks h2 ,.register-blocks h2  {
     display: inline-block;
     text-transform: uppercase;
+    color:#7b7c7d;
     margin-bottom: 15px;
     background: transparent none repeat scroll 0% 0%;
     border-bottom: 2px solid #FDC600;
@@ -2816,17 +2828,17 @@ padding-bottom: 15px;
 
 /*FOOOTER*/
 .footer-area{
-border-top: 1px solid #D1D1D1;
+border-top: 1px solid #353839;
 background: #555 url("../../assets/img/bg-footer.jpg") repeat scroll 0% 0%;
-color: #535353;
+color: #7b7c7d;
 }
 .footer{
 padding: 0px 0px 60px;
-background: rgba(255, 255, 255, 0.89) none repeat scroll 0% 0%;
+background: #191919 none repeat scroll 0% 0%;
 }
 .footer ul li i { 
     padding-right: 10px;
-    color: #000;
+    color: #7b7c7d;
 } 
 .footer-copy{
     background: rgba(213, 213, 213, 0.9) none repeat scroll 0% 0%;
@@ -2891,7 +2903,7 @@ ul.footer-adress li {
     margin-bottom: -4px;
 }
 .footer ul li a{
-color: #535353;
+color: #7b7c7d;
 font-weight: 500;
 text-transform: uppercase;
 font-size: 13px;

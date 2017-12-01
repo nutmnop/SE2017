@@ -93,25 +93,36 @@
         <div class="container">
             <div class="row  pr0 padding-top-40 properties-page">
                 <div class="col-md-12 padding-bottom-40 large-search">
-                    <div class="search-form wow pulse">
-                            <form action="/payment" method="post" class=" form-inline">
+                        <div class="search-form wow pulse" data-wow-delay="0.8s">
                                 
-                            <div class="form-group">
-                                
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
-                                    <% movies.forEach(function(movie) { %>
-                                        <option>
-                                            <%=movie.title_th%>
-                                        </option>
-                                        <%})%>
-
-                                </select>
-                            </div>
-                            <button style="width:40px;" class="btn search-btn" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
-                        </div>
+                                          <form action="/payment" method="post" class=" form-inline">
+                                          <div class="form-group">
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกสาขา">
+                                                          <% bh.forEach(function(bh) { %>
+                                                              <option>
+                                                                  <%=bh.branchname%>
+                                                              </option>
+                                                              <%})%>
+                                                  </select>
+                                              </div>
+                                          <div class="form-group">
+                                              
+                                              
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์"
+                                                  name="moviename">
+                                                  <% movies.forEach(function(movie) { %>
+                                                      <option>
+                                                          <%=movie.title_th%>
+                                                      </option>
+                                                      <%})%>
+              
+                                              </select>
+                                          </div>
+                                          <button style="width:40px;" class="btn search-btn" type="submit">
+                                              <i class="fa fa-search"></i>
+                                          </button>
+                                      </form>
+                                  </div>
                         </div>
             </div>
         </div>
@@ -164,19 +175,21 @@
                                                 <th>Time</th>
                                                 <th>Movie</th>
                                                 <th>Seat</th>
-                                                <th>Number</th>
                                                 <th>Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>01/01/01</td>
-                                                <td>10.00</td>
-                                                <td>La La Land</td>
-                                                    <td>A10</td>
-                                                    <td>1</td>
-                                                    <td>180</td>
-                                            </tr>
+                                            <%payment.forEach(function(pay){%>
+                                                <tr>
+                                                        <td><%=pay.date%></td>
+                                                        <td><%=pay.showtime%></td>
+                                                        <td><%=pay.moviename%></td>
+                                                            <td><%=pay.seat%></td>
+                                                            
+                                                            <td><%=pay.price%></td>
+                                                    </tr>
+                                            <%})%>
+                                           
 
                                         </tbody>
                                     </table>

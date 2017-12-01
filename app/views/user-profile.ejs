@@ -92,25 +92,36 @@
         <div class="container">
             <div class="row  pr0 padding-top-40 properties-page">
                 <div class="col-md-12 padding-bottom-40 large-search">
-                    <div class="search-form wow pulse">
-                            <form action="/payment" method="post" class=" form-inline">
+                        <div class="search-form wow pulse" data-wow-delay="0.8s">
                                 
-                            <div class="form-group">
-                                
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
-                                    <% movies.forEach(function(movie) { %>
-                                        <option>
-                                            <%=movie.title_th%>
-                                        </option>
-                                        <%})%>
-
-                                </select>
-                            </div>
-                            <button style="width:40px;" class="btn search-btn" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
-                        </div>
+                                          <form action="/payment" method="post" class=" form-inline">
+                                          <div class="form-group">
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกสาขา">
+                                                          <% bh.forEach(function(bh) { %>
+                                                              <option>
+                                                                  <%=bh.branchname%>
+                                                              </option>
+                                                              <%})%>
+                                                  </select>
+                                              </div>
+                                          <div class="form-group">
+                                              
+                                              
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์"
+                                                  name="moviename">
+                                                  <% movies.forEach(function(movie) { %>
+                                                      <option>
+                                                          <%=movie.title_th%>
+                                                      </option>
+                                                      <%})%>
+              
+                                              </select>
+                                          </div>
+                                          <button style="width:40px;" class="btn search-btn" type="submit">
+                                              <i class="fa fa-search"></i>
+                                          </button>
+                                      </form>
+                                  </div>
             </div>
         </div>
     </div>

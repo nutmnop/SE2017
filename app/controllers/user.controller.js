@@ -2,7 +2,8 @@ var User = require('mongoose').model('User');
 var Movie = require('mongoose').model('Movie');
 var ObjectId = require('mongodb').ObjectID;
 var crypto = require('crypto');
-
+var Branch = require('mongoose').model('Branch');
+var Payment = require('mongoose').model('Payment');
 var passport = require('passport');
 
 
@@ -95,11 +96,13 @@ exports.showprofile = function (req, res) {
     if (err) {
       return next(err);
     } else {
+      Branch.find({},function(err,bh){
       res.render('user-profile', {
         username: req.user ? req.user.username : '',
-        messages: req.flash('error'),movies,user:req.user
+        messages: req.flash('error'),movies,user:req.user,bh
       });
-    }
+    })
+  }
   });
   
 }
@@ -114,10 +117,15 @@ exports.userpayment = function(req,res){
     if (err) {
       return next(err);
     } else {
+     Payment.find({username:req.user.username},function(err,payment){
+       console.log(payment);
+       Branch.find({},function(err,bh){
       res.render('user-payment', {
         username: req.user ? req.user.username : '',
-        messages: req.flash('error'),movies,user:req.user
-      });
+        messages: req.flash('error'),movies,user:req.user,payment,bh
+      })
+     })
+    })
     }
   });
   

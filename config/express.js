@@ -52,7 +52,7 @@ module.exports = function () {
   app.use('*/assets',express.static('./public/assets'));
   app.use('*/bootstrap',express.static('./public/bootstrap'));
   app.use('*/img',express.static('./public/img'));
-  
+  app.use('*/seat',express.static('./public/seat'));
 
   return app;
 }

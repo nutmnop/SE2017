@@ -52,7 +52,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <h4>Rome Theatre</h4>
+                    <h4 style="color:#f0f0f0;">Rome Theatre</h4>
                 </a>
             </div>
 
@@ -153,7 +153,7 @@
 
                                 <%}%>
                                     <hr>
-                                    <%if(theatres.shwowtime.length<1){%>
+                                    <%if(theatres.moviename===""){%>
                                         <form action="/admin-editshowtime/<%=theatres._id%>" method="post">
                                             <div class="profiel-header">
                                                 <h3>แก้ไขรอบฉาย</h3>

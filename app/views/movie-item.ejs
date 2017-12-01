@@ -16,7 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
-    
+
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -52,8 +52,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
-                    <h4>Rome Theatre</h4>
+                <a class="navbar-brand" style="color:#f0f0f0;" href="index.html">
+                    <h4 style="color:#f0f0f0;">Rome Theatre</h4>
                 </a>
             </div>
 
@@ -61,7 +61,7 @@
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/movie-item/<%=movies._id%>'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register/index'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                         <%}else{%>
                             <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
                             <%}%>
@@ -76,11 +76,15 @@
                     </li>
                     <%if(username){%>
                         <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <%if(username!="admin"){%>
-                            <a class="" href="/user-profile"><%=username%></a>
-                            <%}else{%>
-                                <a class="" href="/admin-index"><%=username%></a>
-                            <%}%>
+                            <%if(username!="admin"){%>
+                                <a class="" href="/user-profile">
+                                    <%=username%>
+                                </a>
+                                <%}else{%>
+                                    <a class="" href="/admin-index">
+                                        <%=username%>
+                                    </a>
+                                    <%}%>
                         </li>
                         <%}%>
                 </ul>
@@ -90,41 +94,53 @@
         <!-- /.container-fluid -->
     </nav>
     <!-- End of nav bar -->
-   <!-- Buy ticket -->
-   <div class="properties-area recent-property" style="background-color: #838383;">
+    <!-- Buy ticket -->
+    <div class="properties-area recent-property" style="background-color: #424242;">
         <div class="container">
             <div class="row  pr0 padding-top-40 properties-page">
-                    <div class="search-form wow pulse" data-wow-delay="0.8s">
-                            <label style="color:dimgrey"> ค้นหารอบฉาย</label>
-                                <form action="/payment" method="post" class=" form-inline">
-                                        
-                                    <div class="form-group">
-                                        
-                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์" name="moviename">
-                                            <% movies_list.forEach(function(movie) { %>
-                                                <option>
-                                                    <%=movie.title_th%>
-                                                </option>
-                                                <%})%>
-        
-                                        </select>
-                                    </div>
-                                    <button style="width:40px;" class="btn search-btn" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                
+                <div class="col-md-12 padding-bottom-40 large-search">
+                        <div class="search-form wow pulse" data-wow-delay="0.8s">
+                                
+                                          <form action="/payment" method="post" class=" form-inline">
+                                          <div class="form-group">
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกสาขา">
+                                                          <% bh.forEach(function(bh) { %>
+                                                              <option>
+                                                                  <%=bh.branchname%>
+                                                              </option>
+                                                              <%})%>
+                                                  </select>
+                                              </div>
+                                          <div class="form-group">
+                                              
+                                              
+                                                  <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="lunchBegins" title="เลือกภาพยนตร์"
+                                                  name="moviename">
+                                                  <% movies_list.forEach(function(movie) { %>
+                                                      <option>
+                                                          <%=movie.title_th%>
+                                                      </option>
+                                                      <%})%>
+              
+                                              </select>
+                                          </div>
+                                          <button style="width:40px;" class="btn search-btn" type="submit">
+                                              <i class="fa fa-search"></i>
+                                          </button>
+                                      </form>
+                                  </div>
+                </div>
+
             </div>
         </div>
     </div>
     <!--End buy ticket -->
 
-    <div class="container">
+    <div class="container" style=" padding-bottom: 50px;">
         <div class="clearfix padding-top-40">
-            <h2>
+            <h2 style="color:#f0f0f0;">
                 <%=movies.title_eng%> :
-                <%=movies.title_th%>
+                    <%=movies.title_th%>
             </h2>
             <hr>
             <div class="col-md-4 p0">
@@ -133,7 +149,7 @@
                     <div class="panel panel-default sidebar-menu wow fadeInRight animated">
 
                         <div class="panel-body recent-property-widget">
-                            <img src="img/<%=movies.poster.replace(/"/gi,"")%>" >
+                            <img src="img/<%=movies.poster.replace(/"/gi, "")%>" >
                         </div>
                     </div>
 
@@ -147,7 +163,9 @@
 
                             <h4 class="s-property-title">เรื่องย่อ</h4>
                             <div class="s-property-content">
-                                <p><%=movies.synopsis%></p>
+                                <p>
+                                    <%=movies.synopsis%>
+                                </p>
                             </div>
                         </div>
                         <!-- End description area  -->
@@ -159,31 +177,42 @@
                             <ul class="additional-details-list clearfix">
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">ประเภทภาพยนตร์</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.type%></span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.type%>
+                                    </span>
                                 </li>
 
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">เรท</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.rate%></span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.rate%>
+                                    </span>
                                 </li>
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">ผู้กำกับ</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.director%></span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.director%>
+                                    </span>
                                 </li>
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">นักแสดงนำ</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.actor%></span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.actor%>
+                                    </span>
                                 </li>
 
 
                                 <li>
                                     <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">เวลา</span>
-                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.length%> mins.</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.length%> mins.</span>
                                 </li>
 
                                 <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">วันที่เข้าฉาย</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%=movies.startdate.toString().substring(0,15)%></span>
+                                    <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">วันที่เข้าฉาย</span>
+                                    <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">
+                                        <%=movies.startdate.toString().substring(0,15)%>
+                                    </span>
                                 </li>
 
 
@@ -246,9 +275,9 @@
                                     </li>
                                     <%}else{%>
                                         <li>
-                                                <a href="/logout">ออกจากระบบ</a>
-                                    </li>
-                                    <%}%>
+                                            <a href="/logout">ออกจากระบบ</a>
+                                        </li>
+                                        <%}%>
                             </ul>
                         </div>
                     </div>

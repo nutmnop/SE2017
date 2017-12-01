@@ -9,13 +9,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rome Theatre</title>
+    <title>Rome Theatre | Movie</title>
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
 
+   
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -51,125 +52,131 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
-                    <h4 style="color:#f0f0f0;">Rome Theatre</h4>
+                <a class="navbar-brand" href="index.html">
+                    <h4>Rome Theatre</h4>
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
-                <div class="button navbar-right">
-                    <%if(!username){%>
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
-                        <%}else{%>
-                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
-                            <%}%>
-                </div>
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/">หน้าหลัก</a>
-                    </li>
-
-                    <li class="wow fadeInDown" data-wow-delay="0.2s">
-                        <a class="" href="/movie-list">ภาพยนตร์</a>
-                    </li>
-                    <%if(username){%>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s">
-                                <%if(username!="admin"){%>
-                            <a class="" href="/user-profile"><%=username%></a>
+                    <div class="button navbar-right">
+                        <%if(!username){%>
+                            <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/register'" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
                             <%}else{%>
-                                <a class="" href="/admin-index"><%=username%></a>
-                            <%}%>
+                                <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.location.href='/logout'" data-wow-delay="0.45s">ออกจากระบบ</button>
+                                <%}%>
+                    </div>
+                    <ul class="main-nav nav navbar-nav navbar-right">
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/">หน้าหลัก</a>
                         </li>
-                        <%}%>
-                </ul>
-            </div>
+    
+                        <li class="wow fadeInDown" data-wow-delay="0.2s">
+                            <a class="" href="/movie-list">ภาพยนตร์</a>
+                        </li>
+                        <%if(username){%>
+                            <li class="wow fadeInDown" data-wow-delay="0.2s">
+                                <a class="" href="/user-profile">
+                                    <%=username%>
+                                </a>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
     <!-- End of nav bar -->
-
-
-    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+    <div class="content-area submit-property padding-top-40" >
         <div class="container">
-            <div class="row">
 
-                <div class="blog-asside-right col-md-2">
-                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">เมนู</h3>
-                        </div>
-                        <div class="panel-body text-widget footer-menu">
-                                <li>
-                                        <a href="/admin-allmovie">ภาพยนตร์ทั้งหมด</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-editmovie">เพิ่มภาพยนตร์</a>
-                                    </li>
-                                    <li>
-                                        <a href="/admin-allbranch">แก้ไขรอบฉายทั้งหมด</a>
-                                    </li>
+            <div class="col-md-12">
 
+                <div class=" text-center">
 
-                        </div>
-                    </div>
-
-
-
+                    <h5 class="btn-primary col-md-3 " style="background-color:#FDC600;color:#fff;" disabled="disable">เลือกรอบฉาย</a>
+                        <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#FDC600;color:#fff;">เลือกที่นั่ง</a>
+                            <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#191919;color:#fff;">ชำระเงิน</a>
+                                <h5 class="btn-primary col-md-3 " disabled="disable" style="background-color:#FDC600;color:#fff;">เสร็จสิ้น</a>
                 </div>
 
-                <div class="blog-lst col-md-10 p0 profiel-container">
+                <div class="box-for2 overflow">
+                    <div class="col-md-12 col-xs-12 register-blocks">
 
-                    <form action="" method="">
-                        <div class="profiel-header">
-                            <h3>
-                                ข้อมูลพนักงาน
+                        <!-- CREDIT CARD FORM STARTS HERE -->
+                        <div class="panel panel-default credit-card-box">
+                            <div class="panel-heading display-table">
+                                <div class="row display-tr">
 
-                            </h3>
-                            <hr>
-                        </div>
-
-                        <div class="clear">
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="img/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
+                                    <div class="display-td">
+                                        <h4 class="panel-title-payment pull-left">การชำระเงิน</h4>
+                                        <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-3 padding-top-25">
-
-                                <div class="form-group">
-                                    <label>ชื่อ
-                                    </label>
-                                    <input name="firstname" type="text" class="form-control" value="Admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>สกุล
-                                    </label>
-                                    <input name="lastname" type="text" class="form-control" value="admin" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>ชื่อผู้ใช้
-                                    </label>
-                                    <input name="username" type="text" class="form-control" value="admin" disabled>
-                                </div>
+                            <div class="panel-body">
+                                <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">NAME ON CARD</label>
+                                                <input type="text" class="form-control" name="nameoncard" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="cardNumber">CARD NUMBER</label>
+                                                <div class="input-group">
+                                                    <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required
+                                                        autofocus />
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-credit-card"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-7 col-md-7">
+                                            <div class="form-group">
+                                                <label for="cardExpiry">
+                                                    <span class="hidden-xs">EXPIRATION</span>
+                                                    <span class="visible-xs-inline">EXP</span> DATE</label>
+                                                <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5 col-md-5 pull-right">
+                                            <div class="form-group">
+                                                <label for="cardCVC">CV CODE</label>
+                                                <input type="tel" class="form-control" name="cardsecure" placeholder="CV CODE" autocomplete="cc-csc" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="btn btn-success btn-next btn-lg btn-block" type="button" onclick=" window.location.href='/payment4/<%=seats[0].branchname%>/<%=seats[0].theatrenumber%>/<%=seats[0].showtime%>'">ยืนยันการซื้อ (400 บาท)</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                           
-
                         </div>
 
-                        
-                        <br>
-                    </form>
-
+                        <!-- CREDIT CARD FORM ENDS HERE -->
+                    </div>
                 </div>
             </div>
-
+            <!--  End step 3 -->
         </div>
     </div>
+
+
+
+
+
+
 
     <!-- Footer area-->
     <div class="footer-area">
@@ -192,13 +199,13 @@
                             <div class="footer-title-line"></div>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="/movie-list">ภาพยนตร์</a>
+                                    <a href="movie-list.html">ภาพยนตร์</a>
                                 </li>
                                 <li>
                                     <a href="#">รอบฉาย</a>
                                 </li>
                                 <li>
-                                        <a href="/logout">ออกจากระบบ</a>
+                                    <a href="register.html">ลงชื่อเข้าใช้</a>
                                 </li>
                             </ul>
                         </div>
